@@ -30,7 +30,7 @@ updater:
   reporting: !secret updater_reporting
   include_used_components: !secret updater_include_used_components
 
-cloud: !include cloud_component.yaml
+# Includes Section
 group: !include groups.yaml
 automation: !include automations.yaml
 script: !include scripts.yaml
