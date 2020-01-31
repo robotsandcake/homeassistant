@@ -2,7 +2,7 @@
 
 (This readme and repository is very much a work in progress, check back often as it will be updated a lot in the next 24 hours)
 
-These are my [Home Assistant](https://home-assistant.io/) [YAML](http://yaml.org) configuration files. This is a very opinionated configuration as they are heavily skewed towards being useful for people with motor skill disabilities like mine, although some of you able-bodied people will probably find useful here!  My quadriplegia has coloured by choices in which devices to automate and what they do when they are automated, for example I flash the lights throughout the house to summon help if I need it.
+These are my [Home Assistant](https://home-assistant.io/) [YAML](http://yaml.org) configuration files. This is a very opinionated configuration as they are heavily skewed towards being useful for people with motor skill disabilities like mine, although some of you able-bodied people will probably find useful here!  My quadriplegia has coloured my choices in which devices to automate and what they do when they are automated. For example, I flash the lights throughout the house to summon help if I need it.
 
 ## Hardware ##
 
@@ -16,7 +16,7 @@ Operating System [Ubuntu 18.04 LTS (Bionic Beaver) Server](http://releases.ubunt
 
 ### Home Assistant (The Linchpin)
 
-[Home Assistant](https://home-assistant.io/) is the most important piece of software in my Home automation set up, it's the central hub that glues together all of the disparate Internet of Things (IoT) devices that wouldn't ordinarily be compatible with each other. There are components for everything from 
+[Home Assistant](https://home-assistant.io/) is the most important piece of software in my Home automation set up. It's the central hub that glues together all of the disparate Internet of Things (IoT) devices that wouldn't ordinarily be compatible with each other. There are components for everything. 
 
 ### Other Software
 
