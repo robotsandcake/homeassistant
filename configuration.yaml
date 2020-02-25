@@ -1,0 +1,36 @@
+homeassistant:
+  customize: !include customize.yaml
+  customize_glob: !include customize_glob.yaml
+  customize_domain: !include customize_domain.yaml
+  packages: !include_dir_named packages
+  whitelist_external_dirs:
+    - !secret homeassistant_whitelist_external_dirs_00
+
+
+## Home Assistant API: The api integration exposes a RESTful API and allows interaction with a Home Assistant instance that is running headless. This integration depends on the http integration. https://www.home-assistant.io/integrations/api/ ##
+api:
+
+## Configure a default setup of Home Assistant (frontend, api, etc)
+default_config:
+
+## Updater Preference
+updater:
+  reporting: !secret updater_reporting
+  include_used_components: !secret updater_include_used_components
+
+
+## Configuration: The config integration is designed to display panels in the frontend to configure and manage parts of Home Assistant. https://www.home-assistant.io/integrations/config/ ##
+config:
+
+# Text to speech
+tts:
+  - platform: google_translate
+
+## If your configuration.yaml file is getting out of hand, you should maybe consider splitting up the configuration. https://home-assistant.io/docs/configuration/splitting_configuration/ ##
+automation: !include automations.yaml
+group: !include groups.yaml
+light: !include light.yaml
+scene: !include scenes.yaml
+script: !include scripts.yaml
+# zone: !include zone.yaml
+
