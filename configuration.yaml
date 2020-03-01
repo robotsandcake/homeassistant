@@ -12,12 +12,14 @@ api:
 
 ## Configure a default setup of Home Assistant (frontend, api, etc)
 default_config:
-
+mobile_app:
+discovery:
+cloud:
+ios:
 ## Updater Preference
 updater:
   reporting: !secret updater_reporting
   include_used_components: !secret updater_include_used_components
-
 
 ## Configuration: The config integration is designed to display panels in the frontend to configure and manage parts of Home Assistant. https://www.home-assistant.io/integrations/config/ ##
 config:
@@ -33,4 +35,3 @@ light: !include light.yaml
 scene: !include scenes.yaml
 script: !include scripts.yaml
 # zone: !include zone.yaml
-
