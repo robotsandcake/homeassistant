@@ -193,44 +193,49 @@
   - data:
       brightness: 255
       entity_id: light.bedroom
-      kelvin: 3000
-      transition: 15
+      kelvin: 5000
+      transition: 5
     service: light.turn_on
 '2626102015549':
   alias: Bright Office
   sequence:
   - data:
       brightness: 255
-      entity_id: light.bedroom
-      kelvin: 3000
-      transition: 15
+      entity_id: light.office
+      kelvin: 5000
+      transition: 5
     service: light.turn_on
 '5005974183166':
   alias: Bright Winterfell
   sequence:
   - data:
       brightness: 255
-      entity_id: light.bedroom
-      kelvin: 3000
-      transition: 15
+      entity_id: light.winterfell
+      kelvin: 5000
+      transition: 5
     service: light.turn_on
 '2715539036213':
   alias: Bright Kitchen
   sequence:
   - data:
       brightness: 255
-      entity_id: light.bedroom
-      kelvin: 3000
-      transition: 15
+      entity_id:
+      - light.onekit
+      - light.twokit
+      - light.threekit
+      kelvin: 5000
+      transition: 5
     service: light.turn_on
 '9854583426983':
   alias: Bright Sitting Room
   sequence:
   - data:
       brightness: 255
-      entity_id: light.bedroom
-      kelvin: 3000
-      transition: 15
+      entity_id:
+      - light.sofa
+      - light.treadmill
+      kelvin: 5000
+      transition: 5
     service: light.turn_on
 '1582559221134':
   alias: Code Blue Sitting Room
@@ -277,3 +282,35 @@
       entity_id: light.basement
       mode: breathe
     service: lifx.effect_pulse
+'1584053823744':
+  alias: Fade to Red
+  sequence:
+  - data:
+      brightness_pct: 100
+      color_name: red
+      entity_id: light.bedroom
+      transition: 11
+    service: light.turn_on
+'1585322454420':
+  alias: Profile No No Far Far Too Bright
+  sequence:
+  - data:
+      brightness_pct: 80
+      entity_id: light.bedroom
+      kelvin: 2000
+      transition: 1
+      white_value: 200
+    entity_id: light.bedroom
+    service: light.turn_on
+'1585589833812':
+  alias: Edna Reading
+  sequence:
+  - data:
+      brightness_pct: 100
+      entity_id:
+      - light.sofa
+      - light.treadmill
+      kelvin: 5000
+      transition: 6
+      white_value: 125
+    service: light.turn_on
