@@ -1,6 +1,6 @@
 # Home Assistant Config by [@RobotsandCake](https://github.com/robotsandcake) #
 
-(This README and repository or a working progress and will be updated extensively next 24 to 48 hours.)
+(This README and repository are a work in progress.)
 
 These [YAML](http://yaml.org) configuration files for the home automation software [Home Assistant](https://home-assistant.io/) are designed for people with motor-skill difficulties like mine. For example I flash the lights throughout the house to summon help if I need it. Some of you able-bodied people might find some use in the things here, and you are also welcome.
 
