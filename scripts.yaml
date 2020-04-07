@@ -289,7 +289,7 @@
       brightness_pct: 100
       color_name: red
       entity_id: light.bedroom
-      transition: 11
+      transition: 8
     service: light.turn_on
 '1585322454420':
   alias: Profile No No Far Far Too Bright
