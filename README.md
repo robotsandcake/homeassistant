@@ -23,3 +23,9 @@ I use an old [Mac Mini (2011)](https://support.apple.com/kb/sp632?locale=en_US).
 
 I group my devices by function. If it is super confusing please let me know so I can do nothing about it except cry.  Thanks.
 
+---
+
+---
+
+
+
