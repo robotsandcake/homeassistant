@@ -1,6 +1,0 @@
-# Launch Library #
-
-## The launch_library sensor will provide you with information about the next planned space launch. https://www.home-assistant.io/integrations/launch_library/ ##
-sensor:
-  - platform: launch_library
-    name: Space Launches
