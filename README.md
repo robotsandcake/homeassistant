@@ -40,18 +40,32 @@ There are many ways to organise the large number of IoT Devices thatare scattere
 
 [^vim]: I don't see what is so difficult, press escape then type a colon  followed by the Q and press return. Simples!
 
-# SALLY #
+## IoT Devices in Use: ##
 
-I want the disclosure triangle to be here for each device
-
+These are the Internet of Things (IoT) devices that make up my home automation network.
 
 <details>
-<summary>Amazon Echo Dot and associated info</summary> 
-PUT YOUR CONTENT HERE
+<summary>Digital Assistants</summary> 
+- [Google Home](https://store.google.com/gb/product/google_home)
+- - [Echo Dot Gen 2](http://amzn.to/2hvCexj)
+- [Google Home Mini](https://store.google.com/gb/product/google_home_mini)
 </details>
-doood!
-Disclosure triangle
-  Google mini and associated info
 
-Disclosure triangle
-  lightbulbs and associated flow
+<details>
+<summary>Various Z-Wave Devices</summary>
+- [AEON Aeotec Z-Stick Gen5 - Z-Wave Plus USB Gateway](https://www.amazon.co.uk/AEON-AEOEZW090-C-Aeotec-Z-Stick-gateway/dp/B00YETCNOE)
+- [FOXX FPZWRE1UK Z-Wave Range Extender](https://www.amazon.co.uk/gp/product/B014JS4T0A/ref=oh_aui_search_detailpage?ie=UTF8&th=1)
+- [FOXX FPZWSSG5UK Z-Wave Smart Switch/Power Outlet](https://www.amazon.co.uk/gp/product/B014JS57XI/ref=oh_aui_search_detailpage?ie=UTF8&th=1)
+- [Z-Wave Plus Aeotec Smart Switch 6](https://www.vesternet.com/z-wave-aeon-labs-smart-switch-6-gen5-uk)
+- [Fibaro FGMS-001 Motion Sensors](https://www.fibaro.com/en/products/motion-sensor/)
+- [Z-Wave Plus Aeotec Door/Window Sensor 6](https://www.vesternet.com/z-wave-aeon-labs-door-window-sensor-6-gen5) 
+- [Aeotec Door / Window Sensor 7](https://aeotec.com/z-wave-door-window-sensor/)
+</details>
+
+<details>
+<summary>Google Products</summary> 
+- [Google Nest Protect 2nd Generation Smoke + Carbon Monoxide Alarm (Wired), White](https://store.google.com/gb/product/nest_protect_2nd_gen)
+- [Chromecast Audio](https://store.google.com/product/chromecast_audio)
+</details>
+
+
