@@ -36,9 +36,7 @@ There is also the fact that there is a huge community around 12 meaning that any
 
 There are many ways to organise the large number of IoT Devices thatare scattered around my Humble abode, so I tried grouping them by manufacturer but that just looked rather odd after a while and wouldn't really make sense.  If it is super confusing please let me know so I can do nothing about it except cry.  Thanks.
 
----
 
-[^vim]: I don't see what is so difficult, press escape then type a colon  followed by the Q and press return. Simples!
 
 ## IoT Devices in Use: ##
 
@@ -46,26 +44,29 @@ These are the Internet of Things (IoT) devices that make up my home automation n
 
 <details>
 <summary>Digital Assistants</summary> 
-- [Google Home](https://store.google.com/gb/product/google_home)
-- - [Echo Dot Gen 2](http://amzn.to/2hvCexj)
-- [Google Home Mini](https://store.google.com/gb/product/google_home_mini)
+* [Google Home](https://store.google.com/gb/product/google_home)
+* [Echo Dot Gen 2](http://amzn.to/2hvCexj)
 </details>
 
 <details>
 <summary>Various Z-Wave Devices</summary>
-- [AEON Aeotec Z-Stick Gen5 - Z-Wave Plus USB Gateway](https://www.amazon.co.uk/AEON-AEOEZW090-C-Aeotec-Z-Stick-gateway/dp/B00YETCNOE)
-- [FOXX FPZWRE1UK Z-Wave Range Extender](https://www.amazon.co.uk/gp/product/B014JS4T0A/ref=oh_aui_search_detailpage?ie=UTF8&th=1)
-- [FOXX FPZWSSG5UK Z-Wave Smart Switch/Power Outlet](https://www.amazon.co.uk/gp/product/B014JS57XI/ref=oh_aui_search_detailpage?ie=UTF8&th=1)
-- [Z-Wave Plus Aeotec Smart Switch 6](https://www.vesternet.com/z-wave-aeon-labs-smart-switch-6-gen5-uk)
-- [Fibaro FGMS-001 Motion Sensors](https://www.fibaro.com/en/products/motion-sensor/)
-- [Z-Wave Plus Aeotec Door/Window Sensor 6](https://www.vesternet.com/z-wave-aeon-labs-door-window-sensor-6-gen5) 
-- [Aeotec Door / Window Sensor 7](https://aeotec.com/z-wave-door-window-sensor/)
+* [Z-Stick Gen5 Z-Wave Gateway](https://aeotec.com/z-wave-usb-stick/)
+* [Z-Wave Plus Aeotec Range Extender 6](https://www.vesternet.com/products/z-wave-plus-aeotec-range-extender-6-uk)
+* [FOXX FPZWSSG5UK Project Z-Wave Smart Switch GEN 5, White](https://www.amazon.co.uk/FPZWSSG5UK-Project-Z-Wave-Smart-Switch/dp/B014JS57XI/ref=cm_cr_arp_d_product_top?ie=UTF8)
+* [Z-Wave Plus Aeotec Smart Switch 6](https://www.vesternet.com/z-wave-aeon-labs-smart-switch-6-gen5-uk)
+* [Fibaro FGMS-001 Motion Sensors](https://www.fibaro.com/en/products/motion-sensor/)
+* [Z-Wave Plus Aeotec Door/Window Sensor 6](https://www.vesternet.com/z-wave-aeon-labs-door-window-sensor-6-gen5)
+* [Aeotec Door / Window Sensor 7](https://aeotec.com/z-wave-door-window-sensor/)
 </details>
 
 <details>
 <summary>Google Products</summary> 
-- [Google Nest Protect 2nd Generation Smoke + Carbon Monoxide Alarm (Wired), White](https://store.google.com/gb/product/nest_protect_2nd_gen)
-- [Chromecast Audio](https://store.google.com/product/chromecast_audio)
+* [Google Nest Protect 2nd Generation Smoke + Carbon Monoxide Alarm (Wired), White](https://store.google.com/gb/product/nest_protect_2nd_gen)
+* [Chromecast Audio](https://store.google.com/product/chromecast_audio)
+* [Google Home Mini](https://store.google.com/product/google_home_mini_first_gen)
 </details>
 
 
+---
+
+[^vim]: I don't see what is so difficult, press escape then type a colon  followed by the Q and press return. Simples!
