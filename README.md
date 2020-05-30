@@ -44,8 +44,8 @@ These are the Internet of Things (IoT) devices that make up my home automation n
 
 <details>
 <summary>Digital Assistants</summary> 
-- [Google Home](https://store.google.com/gb/product/google_home)
-- [Echo Dot Gen 2](http://amzn.to/2hvCexj)
+<li>[Google Home](https://store.google.com/gb/product/google_home)</li>
+<li>[Echo Dot Gen 2](http://amzn.to/2hvCexj)</li>
 </details>
 
 <details>
