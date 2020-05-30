@@ -49,7 +49,7 @@ These are the Internet of Things (IoT) devices that make up my home automation n
 </details>
 
 <details>
-<summary>Various Z-Wave Devices</summary>
+<summary>The Various Z-Wave Devices</summary>
 * [Z-Stick Gen5 Z-Wave Gateway](https://aeotec.com/z-wave-usb-stick/)
 * [Z-Wave Plus Aeotec Range Extender 6](https://www.vesternet.com/products/z-wave-plus-aeotec-range-extender-6-uk)
 * [FOXX FPZWSSG5UK Project Z-Wave Smart Switch GEN 5, White](https://www.amazon.co.uk/FPZWSSG5UK-Project-Z-Wave-Smart-Switch/dp/B014JS57XI/ref=cm_cr_arp_d_product_top?ie=UTF8)
