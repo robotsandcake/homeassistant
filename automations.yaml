@@ -1,0 +1,372 @@
+- id: morning_sunrise_downstairs
+  alias: Morning Sunrise - The House
+  description: Simulate Sunrise in the house.
+  trigger:
+  - at: 06:10
+    platform: time
+  condition: []
+  action:
+  - data:
+      brightness_pct: 100
+      entity_id:
+      - light.basement
+      - light.office
+      - light.onekit
+      - light.twokit
+      - light.threekit
+      - light.sofa
+      - light.treadmill
+      kelvin: 6500
+      transition: 900
+    entity_id: light.bedroom
+    service: light.turn_on
+- id: '1576895116204'
+  alias: Morning Sunrise - The Bedroom
+  description: Simulate Sunrise in the bedroom.
+  trigger:
+  - at: 06:45
+    platform: time
+  condition: []
+  action:
+  - data:
+      brightness_pct: 100
+      entity_id:
+      - light.bedroom
+      kelvin: 6500
+      transition: 900
+    entity_id: light.bedroom
+    service: light.turn_on
+- id: '1577212295785'
+  alias: Z-Wave Network Ready
+  description: The Z-Wave network should be ready for use
+  trigger:
+  - event_data: {}
+    event_type: zwave.network_ready
+    platform: event
+  condition: []
+  action:
+  - data:
+      brightness: 120
+      color_name: green
+      cycles: 2
+      entity_id: light.bedroom
+      mode: breathe
+      period: 3
+    entity_id: light.bedroom
+    service: lifx.effect_pulse
+  - data:
+      message: Z-Wave is ready
+    service: telegram_bot.send_message
+- id: '1577229339140'
+  alias: Morning Sunrise - The Ether
+  description: Simulate Sunrise in The Ether.
+  trigger:
+  - at: 06:50
+    platform: time
+  condition: []
+  action:
+  - data:
+      brightness_pct: 100
+      entity_id: light.winterfell
+      kelvin: 6500
+      transition: 600
+    entity_id: light.winterfell
+    service: light.turn_on
+- id: '1577306707112'
+  alias: Sunset - Bedroom
+  description: Simulate sunset In the bedroom.
+  trigger:
+  - at: '20:30'
+    platform: time
+  condition: []
+  action:
+  - data:
+      brightness_pct: 100
+      color_name: red
+      entity_id: light.bedroom
+      transition: 1800
+    entity_id: light.bedroom
+    service: lifx.set_state
+  - data:
+      message: Sunset Triggered
+    service: telegram_bot.send_message
+- id: '1577566977167'
+  alias: Sunset - Ether
+  description: Simulate Sunset in the Ether.
+  trigger:
+  - at: '21:00'
+    platform: time
+  condition: []
+  action:
+  - data:
+      brightness_pct: 100
+      color_name: red
+      entity_id: light.winterfell
+      transition: 155
+    entity_id: light.winterfell
+    service: lifx.set_state
+- id: '1577736398798'
+  alias: Night-time Off the Ether
+  description: Fade off Over 70 minutes until 10 PM.
+  trigger:
+  - at: '22:00'
+    platform: time
+  condition: []
+  action:
+  - data:
+      entity_id: light.winterfell
+      transition: 900
+    entity_id: light.winterfell
+    service: light.turn_off
+- id: '1577736555579'
+  alias: Night-time off Stuart
+  description: Fade off to complete at 11:30 PM
+  trigger:
+  - at: '22:30'
+    platform: time
+  condition: []
+  action:
+  - data:
+      entity_id: light.bedroom
+      transition: 3600
+    entity_id: light.bedroom
+    service: light.turn_off
+- id: '1578196982271'
+  alias: Home Assistant Has Started Up
+  description: Send a Telegram notification when Home Assistant starts up.
+  trigger:
+  - event: start
+    platform: homeassistant
+  condition: []
+  action:
+  - data:
+      message: Skynet lives, puny human! My IP is 10.0.0.63
+    service: telegram_bot.send_message
+- id: '1578610682830'
+  alias: New Device Connected
+  description: Announce New Device to Connect to the Network.
+  trigger:
+  - event_data: {}
+    event_type: device_tracker_new_device
+    platform: event
+  condition: []
+  action:
+  - data_template:
+      message: 'New device:  {{trigger.to_state.name }}'
+    service: telegram_bot.send_message
+- id: '1578663468320'
+  alias: Hoists Need Power
+  description: A reminder to plug the hoist back in so it can charge.
+  trigger:
+  - below: '1.6'
+    entity_id: sensor.the_hoist_power
+    for: '3600'
+    platform: numeric_state
+  condition: []
+  action:
+  - data:
+      message: Please plug the hoist back in, hoists need food too.
+    service: telegram_bot.send_message
+  - data:
+      message: Please plug the hoist back inas hoists need food too and I'm sure you
+        would not like to see Stuart have a nervous breakdown
+    service: tts.google_translate_say
+- id: '1579627188950'
+  alias: Synology Bad Sectors
+  description: Notify me if A disk in my NAS develops a bad sector.
+  trigger:
+  - entity_id: sensor.synology_dsm_exceeded_max_bad_sectors_sda
+    for: '5'
+    from: 'False'
+    platform: state
+    to: 'True'
+  - entity_id: sensor.synology_dsm_exceeded_max_bad_sectors_sdb
+    for: '5'
+    from: 'False'
+    platform: state
+    to: 'True'
+  - entity_id: sensor.synology_dsm_exceeded_max_bad_sectors_sdc
+    for: '5'
+    from: 'False'
+    platform: state
+    to: 'True'
+  - entity_id: sensor.synology_dsm_exceeded_max_bad_sectors_sdd
+    for: '5'
+    from: 'False'
+    platform: state
+    to: 'True'
+  - entity_id: sensor.synology_dsm_exceeded_max_bad_sectors_sde
+    for: '5'
+    from: 'False'
+    platform: state
+    to: 'True'
+  - entity_id: sensor.synology_dsm_exceeded_max_bad_sectors_sdf
+    for: '5'
+    from: 'False'
+    platform: state
+    to: 'True'
+  - entity_id: sensor.synology_dsm_exceeded_max_bad_sectors_sdg
+    for: '5'
+    from: 'False'
+    platform: state
+    to: 'True'
+  - entity_id: sensor.synology_dsm_exceeded_max_bad_sectors_sdh
+    for: '5'
+    from: 'False'
+    platform: state
+    to: 'True'
+  condition: []
+  action:
+  - data_template:
+      message: '"the disk {{trigger.to_state.name }} has developed a bad sector"'
+    service: telegram_bot.send_message
+- id: '1579741187732'
+  alias: The International Space Station Overhead
+  description: The International Space Station (ISS) Is above you right now!
+  trigger:
+  - entity_id: binary_sensor.iss
+    for: '5'
+    from: 'off'
+    platform: state
+    to: 'on'
+  condition: []
+  action:
+  - data:
+      message: The International Space Station is directly above you!
+    service: telegram_bot.send_message
+- id: '1581075153257'
+  alias: It's a Wee Warning, Jim.
+  description: This will remind me to turn my catheter tap back on after ${NUMBER}
+    of minutes.
+  trigger:
+  - entity_id: sensor.catheter_state
+    for: '2400'
+    from: Open
+    platform: state
+    to: Closed
+  condition: []
+  action:
+  - data:
+      entity_id: media_player.server_cupboard_cast
+      volume_level: 0.5
+    entity_id: media_player.server_cupboard_cast
+    service: media_player.volume_set
+  - data:
+      entity_id: media_player.server_cupboard_cast
+      message: Please turn the Catheter back on before the boss goes off bang and
+        explodes.
+    service: tts.google_translate_say
+  - data:
+      message: Please turn the Catheter back on before the boss goes off bang and
+        explodes.
+    service: telegram_bot.send_message
+- id: '1581246932588'
+  alias: Why Is It All Wet.
+  description: Send a notification when the flood sensor detects water.
+  trigger:
+  - entity_id: binary_sensor.flood_sensor_named_colin_flood
+    from: 'off'
+    platform: state
+    to: 'on'
+  condition: []
+  action:
+  - data:
+      message: I have detected water in the basement, you should probably investigate.
+    service: telegram_bot.send_message
+  - data:
+      entity_id:
+      - media_player.google_home
+      volume_level: 0.2
+    entity_id: media_player.google_home
+    service: media_player.volume_set
+  - data:
+      entity_id:
+      - media_player.google_home
+      message: I have detected water in the basement, you should probably investigate.
+    service: tts.google_translate_say
+- id: '1583256971507'
+  alias: Synology Disk Status
+  description: Notify me if A disk fails on my NAS.
+  trigger:
+  - entity_id: sensor.synology_dsm_status_sda
+    for: '5'
+    from: normal
+    platform: state
+    to: system_crashed
+  - entity_id: sensor.synology_dsm_status_sdb
+    for: '5'
+    from: normal
+    platform: state
+    to: system_crashed
+  - entity_id: sensor.synology_dsm_status_sdc
+    for: '5'
+    from: normal
+    platform: state
+    to: system_crashed
+  - entity_id: sensor.synology_dsm_status_sdd
+    for: '5'
+    from: normal
+    platform: state
+    to: system_crashed
+  - entity_id: sensor.synology_dsm_status_sde
+    for: '5'
+    from: normal
+    platform: state
+    to: system_crashed
+  - entity_id: sensor.synology_dsm_status_sdf
+    for: '5'
+    from: normal
+    platform: state
+    to: system_crashed
+  - entity_id: sensor.synology_dsm_status_sdg
+    for: '5'
+    from: normal
+    platform: state
+    to: system_crashed
+  - entity_id: sensor.synology_dsm_status_sdh
+    for: '5'
+    from: normal
+    platform: state
+    to: system_crashed
+  condition: []
+  action:
+  - data_template:
+      message: '"the disk {{trigger.to_state.name }} has crashed, deal with immediately."'
+    service: telegram_bot.send_message
+- id: '1588741100602'
+  alias: Sunrise - Downstairs
+  description: Simulate Sunrise each morning downstairs.
+  trigger:
+  - at: 06:25
+    platform: time
+  condition: []
+  action:
+  - data:
+      brightness_pct: 100
+      entity_id:
+      - light.basement
+      - light.bedroom
+      - light.office
+      - light.onekit
+      - light.twokit
+      - light.threekit
+      - light.sofa
+      - light.treadmill
+      kelvin: 6500
+      transition: 300
+    service: light.turn_on
+- id: '1588741399148'
+  alias: Z-Wave Network Ready but with some Dead
+  description: The Z-Wave network Is ready for use but there may be some dead nodes,
+    you should investigate further.
+  trigger:
+  - event_data: {}
+    event_type: zwave.network_complete_some_dead
+    platform: event
+  condition: []
+  action:
+  - data:
+      message: The Z-Wave network Is ready for use but there may be some dead nodes,
+        you should investigate further.
+      title: Z-Wave Network Ready With Nodes
+    service: telegram_bot.send_message
