@@ -50,20 +50,20 @@ These are the Internet of Things (IoT) devices that make up my home automation n
 
 <details>
 <summary>The Various Z-Wave Devices</summary>
-* [Z-Stick Gen5 Z-Wave Gateway](https://aeotec.com/z-wave-usb-stick/)
-* [Z-Wave Plus Aeotec Range Extender 6](https://www.vesternet.com/products/z-wave-plus-aeotec-range-extender-6-uk)
-* [FOXX FPZWSSG5UK Project Z-Wave Smart Switch GEN 5, White](https://www.amazon.co.uk/FPZWSSG5UK-Project-Z-Wave-Smart-Switch/dp/B014JS57XI/ref=cm_cr_arp_d_product_top?ie=UTF8)
-* [Z-Wave Plus Aeotec Smart Switch 6](https://www.vesternet.com/z-wave-aeon-labs-smart-switch-6-gen5-uk)
-* [Fibaro FGMS-001 Motion Sensors](https://www.fibaro.com/en/products/motion-sensor/)
-* [Z-Wave Plus Aeotec Door/Window Sensor 6](https://www.vesternet.com/z-wave-aeon-labs-door-window-sensor-6-gen5)
-* [Aeotec Door / Window Sensor 7](https://aeotec.com/z-wave-door-window-sensor/)
+<li>[Z-Stick Gen5 Z-Wave Gateway](https://aeotec.com/z-wave-usb-stick/)</li>
+<li>[Z-Wave Plus Aeotec Range Extender 6](https://www.vesternet.com/products/z-wave-plus-aeotec-range-extender-6-uk)</li>
+<li>[FOXX FPZWSSG5UK Project Z-Wave Smart Switch GEN 5, White](https://www.amazon.co.uk/FPZWSSG5UK-Project-Z-Wave-Smart-Switch/dp/B014JS57XI/ref=cm_cr_arp_d_product_top?ie=UTF8)</li>
+<li>[Z-Wave Plus Aeotec Smart Switch 6](https://www.vesternet.com/z-wave-aeon-labs-smart-switch-6-gen5-uk)</li>
+<li>[Fibaro FGMS-001 Motion Sensors](https://www.fibaro.com/en/products/motion-sensor/)</li>
+<li>[Z-Wave Plus Aeotec Door/Window Sensor 6](https://www.vesternet.com/z-wave-aeon-labs-door-window-sensor-6-gen5)</li>
+<li>[Aeotec Door / Window Sensor 7](https://aeotec.com/z-wave-door-window-sensor/)</li>
 </details>
 
 <details>
 <summary>Google Products</summary> 
-* [Google Nest Protect 2nd Generation Smoke + Carbon Monoxide Alarm (Wired), White](https://store.google.com/gb/product/nest_protect_2nd_gen)
-* [Chromecast Audio](https://store.google.com/product/chromecast_audio)
-* [Google Home Mini](https://store.google.com/product/google_home_mini_first_gen)
+<li>[Google Nest Protect 2nd Generation Smoke + Carbon Monoxide Alarm (Wired), White](https://store.google.com/gb/product/nest_protect_2nd_gen)</li>
+<li>[Chromecast Audio](https://store.google.com/product/chromecast_audio)</li>
+<li>[Google Home Mini](https://store.google.com/product/google_home_mini_first_gen)</li>
 </details>
 
 
