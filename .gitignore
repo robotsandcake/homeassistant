@@ -1,0 +1,27 @@
+# Example .gitignore file for your config dir.
+# An * ensures that everything will be ignored.
+*
+
+## Whitelist files/folders with !. Wildcard is *
+!*.yaml
+!.gitignore
+!*.md
+!packages/
+
+## Ignore folders.
+.storage
+.cloud
+.google.token
+
+## Files You Don't Need Or Want To See!
+my_hass_notes.md
+README_TEMPORARY.md
+README_Presence_Detection.md
+
+## Ignore annoying Mac files
+.DS_Store
+
+## Ensure these YAML files are ignored, otherwise your secret data/credentials will leak.
+ip_bans.yaml
+secrets.yaml
+known_devices.yaml
