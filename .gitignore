@@ -18,6 +18,8 @@ my_hass_notes.md
 README_Presence_Detection.md
 README_Temporary.md
 packages/README_Packages.md
+zwave_device_config.yaml
+scenes.yaml
 
 ## Ignore annoying Mac files
 .DS_Store
