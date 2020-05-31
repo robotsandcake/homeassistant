@@ -1,0 +1,60 @@
+# SMS notifications via GSM-Modem Integration #
+
+## The sms integration allows having a local execution SMS notification via Gammu. This is ideal when the internet is offline or when the power goes out. This integration provides the following platforms: Notify. https://www.home-assistant.io/integrations/sms ##
+## location of semester device on disk ##
+sms:
+  device: /dev/ttyUSB1
+
+
+notify:
+  - platform: sms
+    name: !secret sms_person_name_al
+    recipient: !secret number_al
+  - platform: sms
+    name: !secret sms_person_name_as
+    recipient: !secret number_as
+  - platform: sms
+    name: !secret sms_person_name_kf
+    recipient: !secret number_kf
+  - platform: sms
+    name: !secret sms_person_name_aj
+    recipient: !secret number_aj
+  - platform: sms
+    name: !secret sms_person_name_eg
+    recipient: !secret number_eg
+  - platform: sms
+    name: !secret sms_person_name_jy
+    recipient: !secret number_jy
+  - platform: sms
+    name: !secret sms_person_name_sd
+    recipient: !secret number_sd
+  - platform: sms
+    name: !secret sms_person_name_sm
+    recipient: !secret number_sm
+  - platform: sms
+    name: !secret sms_person_name_st
+    recipient: !secret number_st
+  - platform: sms
+    name: !secret sms_person_name_se
+    recipient: !secret number_se
+  - platform: sms
+    name: !secret sms_person_name_vs
+    recipient: !secret number_vs
+  - platform: sms
+    name: !secret sms_person_name_hn
+    recipient: !secret number_hn
+  - platform: sms
+    name: !secret sms_person_name_sc
+    recipient: !secret number_sc
+  - platform: sms
+    name: !secret sms_person_name_tm
+    recipient: !secret number_tm
+  - platform: sms
+    name: !secret sms_person_name_ew
+    recipient: !secret number_ew
+  - platform: sms
+    name: !secret sms_person_name_rp
+    recipient: !secret number_rp
+  - platform: sms
+    name: !secret sms_person_name_ae
+    recipient: !secret number_ae
