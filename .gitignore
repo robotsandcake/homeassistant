@@ -16,6 +16,8 @@
 ## Files You Don't Need Or Want To See!
 my_hass_notes.md
 README_Presence_Detection.md
+README_Temporary.md
+packages/README_Packages.md
 
 ## Ignore annoying Mac files
 .DS_Store
