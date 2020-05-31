@@ -240,7 +240,7 @@
     of minutes.
   trigger:
   - entity_id: sensor.catheter_state
-    for: '2400'
+    for: '1800'
     from: Open
     platform: state
     to: Closed
