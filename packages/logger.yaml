@@ -7,7 +7,4 @@
 
 # To log all messages and ignore events lower than debug for specified components:
 logger:
-  default: warn
-  logs:
-    # log level for HA core
-    homeassistant.core: info
+  default: info
