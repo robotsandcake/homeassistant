@@ -142,18 +142,6 @@
   - data:
       message: Skynet lives, puny human! My IP is 10.0.0.63
     service: telegram_bot.send_message
-- id: '1578610682830'
-  alias: New Device Connected
-  description: Announce New Device to Connect to the Network.
-  trigger:
-  - event_data: {}
-    event_type: device_tracker_new_device
-    platform: event
-  condition: []
-  action:
-  - data_template:
-      message: 'New device:  {{trigger.to_state.name }}'
-    service: telegram_bot.send_message
 - id: '1578663468320'
   alias: Hoists Need Power
   description: A reminder to plug the hoist back in so it can charge.
@@ -240,7 +228,7 @@
     of minutes.
   trigger:
   - entity_id: sensor.catheter_state
-    for: '1800'
+    for: '2400'
     from: Open
     platform: state
     to: Closed
@@ -369,4 +357,16 @@
       message: The Z-Wave network Is ready for use but there may be some dead nodes,
         you should investigate further.
       title: Z-Wave Network Ready With Nodes
+    service: telegram_bot.send_message
+- id: '1591468998232'
+  alias: New Device Connected
+  description: Announce New Device to Connect to the Network.
+  trigger:
+  - event_data: {}
+    event_type: device_tracker_new_device
+    platform: event
+  condition: []
+  action:
+  - data:
+      message: '"New device: {{trigger.to_state.name }} has crashed, deal with immediately."'
     service: telegram_bot.send_message
