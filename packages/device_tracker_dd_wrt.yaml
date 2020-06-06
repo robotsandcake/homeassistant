@@ -1,6 +1,6 @@
 # DD-WRT Device Tracker #
 
-## This platform offers presence detection by looking at connected devices to a DD-WRT based router. https://www.home-assistant.io/integrations/ddwrt/
+# ## This platform offers presence detection by looking at connected devices to a DD-WRT based router. https://www.home-assistant.io/integrations/ddwrt/
 
 device_tracker:
   - platform: ddwrt

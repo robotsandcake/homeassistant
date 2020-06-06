@@ -1,0 +1,11 @@
+# Emby Media Player #
+
+## The emby platform allows you to control a Emby multimedia system from Home Assistant. https://www.home-assistant.io/integrations/emby/ ##
+
+# Example configuration.yaml entry
+media_player:
+  - platform: emby
+    host: !secret emby_host
+    api_key: !secret emby_api_key
+    port: !secret emby_port
+    ssl: !secret emby_ssl
