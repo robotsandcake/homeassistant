@@ -2,8 +2,10 @@
 
 ## The sms integration allows having a local execution SMS notification via Gammu. This is ideal when the internet is offline or when the power goes out. This integration provides the following platforms: Notify. https://www.home-assistant.io/integrations/sms ##
 ## location of semester device on disk ##
+
+## If everything stops working with this integration, try changing the following to "/dev/ttyUSB1".
 sms:
-  device: /dev/ttyUSB1
+  device: /dev/ttyUSB0
 
 
 notify:
