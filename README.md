@@ -50,13 +50,13 @@ These are the Internet of Things (IoT) devices that make up my home automation n
 
 <details>
 <summary>The Various Z-Wave Devices</summary>
-<li>[Z-Stick Gen5 Z-Wave Gateway](https://aeotec.com/z-wave-usb-stick/)</li>
-<li>[Z-Wave Plus Aeotec Range Extender 6](https://www.vesternet.com/products/z-wave-plus-aeotec-range-extender-6-uk)</li>
-<li>[FOXX FPZWSSG5UK Project Z-Wave Smart Switch GEN 5, White](https://www.amazon.co.uk/FPZWSSG5UK-Project-Z-Wave-Smart-Switch/dp/B014JS57XI/ref=cm_cr_arp_d_product_top?ie=UTF8)</li>
-<li>[Z-Wave Plus Aeotec Smart Switch 6](https://www.vesternet.com/z-wave-aeon-labs-smart-switch-6-gen5-uk)</li>
-<li>[Fibaro FGMS-001 Motion Sensors](https://www.fibaro.com/en/products/motion-sensor/)</li>
-<li>[Z-Wave Plus Aeotec Door/Window Sensor 6](https://www.vesternet.com/z-wave-aeon-labs-door-window-sensor-6-gen5)</li>
-<li>[Aeotec Door / Window Sensor 7](https://aeotec.com/z-wave-door-window-sensor/)</li>
+<li><a href="https://www.vesternet.com/products/z-wave-plus-aeotec-range-extender-6-uk">Z-Wave Plus Aeotec Range Extender 6</a></li>
+<li><a href="https://aeotec.com/z-wave-door-window-sensor/">Aeotec Door / Window Sensor 7</a></li>
+<li><a href="https://www.amazon.co.uk/FPZWSSG5UK-Project-Z-Wave-Smart-Switch/dp/B014JS57XI/ref=cm_cr_arp_d_product_top?ie=UTF8">FOXX FPZWSSG5UK Project Z-Wave Smart Switch GEN 5, White</a></li>
+<li><a href="https://www.vesternet.com/z-wave-aeon-labs-smart-switch-6-gen5-uk"></a>Z-Wave Plus Aeotec Smart Switch 6</li>
+<li><a href="https://www.fibaro.com/en/products/motion-sensor/"></a>Fibaro FGMS-001 Motion Sensors</li>
+<li><a href="https://www.vesternet.com/z-wave-aeon-labs-door-window-sensor-6-gen5"></a>Z-Wave Plus Aeotec Door/Window Sensor 6</li>
+<li><a href="https://aeotec.com/z-wave-usb-stick/">Z-Stick Gen5 Z-Wave Gateway</a></li>
 </details>
 
 <details>
