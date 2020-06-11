@@ -228,7 +228,7 @@
     of minutes.
   trigger:
   - entity_id: sensor.catheter_state
-    for: '2400'
+    for: '1800'
     from: Open
     platform: state
     to: Closed
@@ -370,3 +370,18 @@
   - data:
       message: '"New device: {{trigger.to_state.name }} has crashed, deal with immediately."'
     service: telegram_bot.send_message
+- id: '1591743643343'
+  alias: Text to speech Test
+  description: ''
+  trigger:
+  - at: 00:13
+    platform: time
+  condition:
+  - condition: state
+    entity_id: binary_sensor.office_door_binary_sensor
+    state: 'on'
+  action:
+  - data:
+      entity_id: media_player.server_cupboard_cast
+      message: It is 00:04 and time to close windows
+    service: tts.google_translate_say
