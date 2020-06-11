@@ -380,3 +380,13 @@ home_assistant_turn_off:
   sequence:
   - data: {}
     service: homeassistant.turn_off
+'1591637774793':
+  alias: Test Script
+  sequence:
+  - data:
+      entity_id: media_player.basement_dwelling_mini
+      volume_level: 0.4
+    entity_id: media_player.basement_dwelling_mini
+    service: media_player.volume_set
+  - data: {}
+    service: tts.google_translate_say
