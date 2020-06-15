@@ -390,3 +390,10 @@ home_assistant_turn_off:
     service: media_player.volume_set
   - data: {}
     service: tts.google_translate_say
+'1592243604778':
+  alias: Text to Speech Test
+  sequence:
+  - data:
+      entity_id: media_player.google_home_bedroom
+      message: hello
+    service: tts.google_translate_say
