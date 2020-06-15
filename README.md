@@ -49,6 +49,12 @@ These are the Internet of Things (IoT) devices that make up my home automation n
 </details>
 
 <details>
+    <summary>Digital Assistants</summary>
+    <li><a href="https://store.google.com/gb/product/google_home">Google Home</a></li>
+    <li><a href="http://amzn.to/2hvCexj">Echo Dot Gen 2</a></li>
+</details>
+
+<details>
 <summary>The Various Z-Wave Devices</summary>
 <li>[Z-Stick Gen5 Z-Wave Gateway](https://aeotec.com/z-wave-usb-stick/)</li>
 <li>[Z-Wave Plus Aeotec Range Extender 6](https://www.vesternet.com/products/z-wave-plus-aeotec-range-extender-6-uk)</li>
@@ -69,4 +75,4 @@ These are the Internet of Things (IoT) devices that make up my home automation n
 
 ---
 
-[^vim]: I don't see what is so difficult, press escape then type a colon  followed by the Q and press return. Simples!
+[^vim]: I don't see what is so difficult, press escape then type a colon followed by the Q and press return. Simples!
