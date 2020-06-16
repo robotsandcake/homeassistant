@@ -11,6 +11,9 @@ homeassistant:
 ## Home Assistant API: The api integration exposes a RESTful API and allows interaction with a Home Assistant instance that is running headless. This integration depends on the http integration. https://www.home-assistant.io/integrations/api/ ##
 api:
 
+## Configuration: The config integration is designed to display panels in the frontend to configure and manage parts of Home Assistant. https://www.home-assistant.io/integrations/config/ ##
+config:
+
 ## Configure a default setup of Home Assistant (frontend, api, etc)
 default_config:
 
@@ -20,28 +23,14 @@ discovery:
     - apple_tv
     - homekit
 
-# Integration with Mobile Application
-#mobile_app:
-
-# 
+# Apple iOS integration
 ios:
 
-## Updater Preference
+## Update Preferences
 updater:
   reporting: !secret updater_reporting
   include_used_components: !secret updater_include_used_components
 
-# Add map information
-#map:
-## Configuration: The config integration is designed to display panels in the frontend to configure and manage parts of Home Assistant. https://www.home-assistant.io/integrations/config/ ##
-config:
-
-#cloud:
-
-## The google_translate text-to-speech platform uses the unofficial Google Translate Text-to-Speech engine to read a text with natural sounding voices. https://www.home-assistant.io/integrations/google_translate/ ##
-
-tts:
-  - platform: google_translate
 
 ## If your configuration.yaml file is getting out of hand because it is too large (ahem), you should ***REMOVED*** consider splitting your configuration into smaller chunks.  https://home-assistant.io/docs/configuration/splitting_configuration/ ##
 ## Files containing information you would like included
