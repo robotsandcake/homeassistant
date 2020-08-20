@@ -2,11 +2,11 @@
 
 ## Telegram implementation to support sending messages only. Your Home Assistant instance does not have to be exposed to the Internet and there is no polling to receive messages sent to the bot. https://www.home-assistant.io/integrations/telegram_broadcast/ ##
 
-telegram_bot:
-  - platform: broadcast
-    api_key: !secret telegram_api_key
-    parse_mode: !secret telegram_parse_mode
-    allowed_chat_ids:
-      - !secret telegram_allowed_chat_id_00
-      - !secret telegram_allowed_chat_id_01
+# telegram_bot:
+#   - platform: broadcast
+#     api_key: !secret telegram_api_key
+#     parse_mode: !secret telegram_parse_mode
+#     allowed_chat_ids:
+#       - !secret telegram_allowed_chat_id_00
+#       - !secret telegram_allowed_chat_id_01
 
