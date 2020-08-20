@@ -3,7 +3,7 @@ homeassistant:
   customize_glob: !include customize_glob.yaml
   customize_domain: !include customize_domain.yaml
   packages: !include_dir_named packages
-  whitelist_external_dirs:
+  allowlist_external_dirs:
     - !secret homeassistant_whitelist_external_dirs_00
     - !secret homeassistant_whitelist_external_dirs_01
     - !secret homeassistant_whitelist_external_dirs_02
@@ -17,10 +17,13 @@ config:
 ## Configure a default setup of Home Assistant (frontend, api, etc)
 default_config:
 
+# Google Translate Text-to-Speech
+tts:
+  - platform: google_translate
+
 # Hass can automatically discover zeroconf/mDNS & UPnP devices on your network for you.
 discovery:
   ignore:
-    - apple_tv
     - homekit
 
 # Apple iOS integration
@@ -31,12 +34,11 @@ updater:
   reporting: !secret updater_reporting
   include_used_components: !secret updater_include_used_components
 
-
 ## If your configuration.yaml file is getting out of hand because it is too large (ahem), you should maybe consider splitting your configuration into smaller chunks.  https://home-assistant.io/docs/configuration/splitting_configuration/ ##
 ## Files containing information you would like included
 automation: !include automations.yaml
 #cloud: !include cloud.yaml
 #group: !include groups.yaml
-light: !include light.yaml
+#light: !include light.yaml
 scene: !include scenes.yaml
 script: !include scripts.yaml
