@@ -14,21 +14,12 @@
 .google.token
 
 ## Files You Don't Need Or Want To See!
-my_hass_notes.md
-README_Presence_Detection.md
-README_Temporary.md
-packages/README_Packages.md
 zwave_device_config.yaml
 scenes.yaml
 customize.yaml
 customize_domain.yaml
 customize_glob.yaml
-packages/history.yaml
-packages/logbook.yaml
-packages/package_catheter_information.yaml
-packages/package_hass_server_info.yaml
-packages/package_medication.yaml
-packages/recorder.yaml
+
 ## Ignore annoying Mac files
 .DS_Store
 
