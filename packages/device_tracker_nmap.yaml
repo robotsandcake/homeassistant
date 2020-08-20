@@ -3,16 +3,16 @@
 ## As an alternative to the router-based device tracking, it is possible to directly scan the network for devices by using Nmap. The IP addresses to scan can be specified in any format that Nmap understands, including the network-prefix notation (192.168.1.1/24) and the range notation (192.168.1.1-255). https://www.home-assistant.io/integrations/nmap_tracker/ ##
 
 # Two whole subnets, and skipping two specific IPs.
-device_tracker:
-  - platform: nmap_tracker
-    hosts:
-      - !secret nmap_host_subnet_00
-      - !secret nmap_host_subnet_01
-    exclude:
-      - !secret nmap_specifically_excluded_ip_00
-      - !secret nmap_specifically_excluded_ip_01
-    interval_seconds: 30
-    consider_home: 180
-    scan_options: " --privileged -sP -n --host-timeout 10s -T5 "
-    new_device_defaults:
-      track_new_devices: true
+# device_tracker:
+#   - platform: nmap_tracker
+#     hosts:
+#       - !secret nmap_host_subnet_00
+#       - !secret nmap_host_subnet_01
+#     exclude:
+#       - !secret nmap_specifically_excluded_ip_00
+#       - !secret nmap_specifically_excluded_ip_01
+#     interval_seconds: 30
+#     consider_home: 180
+#     scan_options: " --privileged -sP -n --host-timeout 10s -T5 "
+#     new_device_defaults:
+#       track_new_devices: true

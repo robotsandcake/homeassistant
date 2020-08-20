@@ -1,0 +1,8 @@
+# Websocket Connections Sensor #
+
+## The websocket_api sensor platform shows how many clients are connected to the stream API. https://www.home-assistant.io/integrations/sensor.websocket_api/ ##3
+
+# sensor:
+#   - platform: websocket_api
+
+## NOTE This replaces the previous api_streams sensor. The default sensor name is connected_clients.
