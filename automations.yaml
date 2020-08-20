@@ -1,30 +1,8 @@
-- id: morning_sunrise_downstairs
-  alias: Morning Sunrise - The House
-  description: Simulate Sunrise in the house.
-  trigger:
-  - at: 06:10
-    platform: time
-  condition: []
-  action:
-  - data:
-      brightness_pct: 100
-      entity_id:
-      - light.basement
-      - light.office
-      - light.onekit
-      - light.twokit
-      - light.threekit
-      - light.sofa
-      - light.treadmill
-      kelvin: 6500
-      transition: 900
-    entity_id: light.bedroom
-    service: light.turn_on
 - id: '1576895116204'
   alias: Morning Sunrise - The Bedroom
   description: Simulate Sunrise in the bedroom.
   trigger:
-  - at: 06:45
+  - at: 06:50
     platform: time
   condition: []
   action:
@@ -38,7 +16,7 @@
     service: light.turn_on
 - id: '1577212295785'
   alias: Z-Wave Network Ready
-  description: The Z-Wave network should be ready for use
+  description: The Z-Wave network is reporting it is ready
   trigger:
   - event_data: {}
     event_type: zwave.network_ready
@@ -57,6 +35,7 @@
   - data:
       message: Z-Wave is ready
     service: telegram_bot.send_message
+  mode: single
 - id: '1577229339140'
   alias: Morning Sunrise - The Ether
   description: Simulate Sunrise in The Ether.
@@ -140,15 +119,21 @@
   condition: []
   action:
   - data:
+      disable_notification: false
+      disable_web_page_preview: true
       message: Skynet lives, puny human! My IP is 10.0.0.63
+      parse_mode: markdown
+      target: '731090912'
+      title: Home Assistant Started
     service: telegram_bot.send_message
+  mode: single
 - id: '1578663468320'
   alias: Hoists Need Power
   description: A reminder to plug the hoist back in so it can charge.
   trigger:
   - below: '1.6'
-    entity_id: sensor.the_hoist_power
-    for: '3600'
+    entity_id: sensor.the_hoist_power_usage
+    for: '60'
     platform: numeric_state
   condition: []
   action:
@@ -159,6 +144,7 @@
       message: Please plug the hoist back inas hoists need food too and I'm sure you
         would not like to see Stuart have a nervous breakdown
     service: tts.google_translate_say
+  mode: single
 - id: '1579627188950'
   alias: Synology Bad Sectors
   description: Notify me if A disk in my NAS develops a bad sector.
@@ -228,7 +214,7 @@
     of minutes.
   trigger:
   - entity_id: sensor.catheter_state
-    for: '1800'
+    for: '1200'
     from: Open
     platform: state
     to: Closed
@@ -248,6 +234,7 @@
       message: Please turn the Catheter back on before the boss goes off bang and
         explodes.
     service: telegram_bot.send_message
+  mode: single
 - id: '1581246932588'
   alias: Why Is It All Wet.
   description: Send a notification when the flood sensor detects water.
@@ -321,43 +308,20 @@
   - data_template:
       message: '"the disk {{trigger.to_state.name }} has crashed, deal with immediately."'
     service: telegram_bot.send_message
-- id: '1588741100602'
-  alias: Sunrise - Downstairs
-  description: Simulate Sunrise each morning downstairs.
-  trigger:
-  - at: 06:25
-    platform: time
-  condition: []
-  action:
-  - data:
-      brightness_pct: 100
-      entity_id:
-      - light.basement
-      - light.bedroom
-      - light.office
-      - light.onekit
-      - light.twokit
-      - light.threekit
-      - light.sofa
-      - light.treadmill
-      kelvin: 6500
-      transition: 300
-    service: light.turn_on
 - id: '1588741399148'
-  alias: Z-Wave Network Ready but with some Dead
-  description: The Z-Wave network Is ready for use but there may be some dead nodes,
-    you should investigate further.
+  alias: Z-Wave Network Complete
+  description: The Z-Wave network is reported it is working completely
   trigger:
   - event_data: {}
-    event_type: zwave.network_complete_some_dead
+    event_type: zwave.network_complete
     platform: event
   condition: []
   action:
   - data:
-      message: The Z-Wave network Is ready for use but there may be some dead nodes,
-        you should investigate further.
-      title: Z-Wave Network Ready With Nodes
+      message: aid wave network is reporting it is completely up
+      title: Z-Wave Network Complete
     service: telegram_bot.send_message
+  mode: single
 - id: '1591468998232'
   alias: New Device Connected
   description: Announce New Device to Connect to the Network.
@@ -370,18 +334,71 @@
   - data:
       message: '"New device: {{trigger.to_state.name }} has crashed, deal with immediately."'
     service: telegram_bot.send_message
-- id: '1591743643343'
-  alias: Text to speech Test
+- id: '1588741100602'
+  alias: Sunrise - Downstairs
+  description: Simulate Sunrise each morning downstairs.
+  trigger:
+  - at: 06:25
+    platform: time
+  condition: []
+  action:
+  - data:
+      brightness_pct: 100
+      entity_id:
+      - light.basement
+      - light.office
+      - light.onekit
+      - light.twokit
+      - light.threekit
+      - light.sofa
+      - light.treadmill
+      kelvin: 6500
+      transition: 300
+    service: light.turn_on
+- id: morning_sunrise_downstairs
+  alias: Morning Sunrise - The House
+  description: Simulate Sunrise in the house.
+  trigger:
+  - at: 06:10
+    platform: time
+  condition: []
+  action:
+  - data:
+      brightness_pct: 100
+      entity_id:
+      - light.basement
+      - light.office
+      - light.onekit
+      - light.twokit
+      - light.threekit
+      - light.sofa
+      - light.treadmill
+      kelvin: 6500
+      transition: 900
+    entity_id: light.basement
+    service: light.turn_on
+- id: '1596321161648'
+  alias: Make sure you shut the doors and windows, it is late.
   description: ''
   trigger:
-  - at: 00:13
+  - at: '23:40'
     platform: time
   condition:
+  - condition: state
+    entity_id: binary_sensor.office_window_binary_sensor
+    state: 'on'
   - condition: state
     entity_id: binary_sensor.office_door_binary_sensor
     state: 'on'
   action:
   - data:
       entity_id: media_player.server_cupboard_cast
-      message: It is 00:04 and time to close windows
+      message: please close all doors and windows as it is now well past your bedtime
     service: tts.google_translate_say
+  - data:
+      entity_id:
+      - media_player.google_home
+      - media_player.bedroom_google_hub
+      message: please close all doors and windows as it is now well past your bedtime
+    service: tts.google_translate_say
+  mode: single
