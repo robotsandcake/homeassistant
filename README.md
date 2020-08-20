@@ -1,5 +1,7 @@
 # Home Assistant Config by [@RobotsandCake](https://github.com/robotsandcake) #
 
+[![GitHub issues](https://img.shields.io/github/issues/robotsandcake/homeassistant)](https://github.com/robotsandcake/homeassistant/issues)
+
 This README and repository are a work in progress. These [YAML](http://yaml.org) [Home Assistant](https://home-assistant.io/) configuration files are designed for people withprofound motor-skill difficulties like mine. For example I can flash the lights different colours throughout the houseto summon help if I need it, so blue flashing means "hey, I could do with a hand" whereas red flashing light means "Run come quick, my hair is on fire!". 
 
 Some of you able-bodied people might find some use in the things here, and you are also welcome.
