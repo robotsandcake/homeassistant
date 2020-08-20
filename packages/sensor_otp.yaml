@@ -1,8 +1,8 @@
 # One-Time Password (OTP) Sensor #
 
-## The otp sensor generates One-Time Passwords according to RFC6238 that is compatible with most OTP generators available, including Google Authenticator. You can use this when building custom security solutions and want to use “rolling codes”, that change every 30 seconds. https://www.home-assistant.io/integrations/otp/ ##
+## The otp sensor generates One-Time Passwords according to [RFC6238](https://tools.ietf.org/html/rfc6238) that is compatible with most OTP generators available, including Google Authenticator. You can use this when building custom security solutions and want to use “rolling codes”, that change every 30 seconds. https://www.home-assistant.io/integrations/otp/ ##
 
-# Example configuration.yaml entry
+## OTP Sensor ##
 sensor:
   - platform: otp
     name: !secret otp_name_00
@@ -31,3 +31,33 @@ sensor:
   - platform: otp
     name: !secret otp_name_08
     token: !secret otp_token_08
+  - platform: otp
+    name: !secret otp_name_09
+    token: !secret otp_token_09
+  - platform: otp
+    name: !secret otp_name_10
+    token: !secret otp_token_10
+  - platform: otp
+    name: !secret otp_name_11
+    token: !secret otp_token_11
+  - platform: otp
+    name: !secret otp_name_12
+    token: !secret otp_token_12
+  - platform: otp
+    name: !secret otp_name_13
+    token: !secret otp_token_13
+  - platform: otp
+    name: !secret otp_name_14
+    token: !secret otp_token_14
+  - platform: otp
+    name: !secret otp_name_15
+    token: !secret otp_token_15
+  - platform: otp
+    name: !secret otp_name_16
+    token: !secret otp_token_16
+  - platform: otp
+    name: !secret otp_name_17
+    token: !secret otp_token_17
+  - platform: otp
+    name: !secret otp_name_18
+    token: !secret otp_token_18
