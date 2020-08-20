@@ -204,6 +204,7 @@ the_fan:
   sequence:
   - entity_id: switch.the_fan
     service: switch.toggle
+  mode: single
 bright_bedroom:
   alias: Bright Bedroom
   sequence:
@@ -272,7 +273,7 @@ bedtime:
     entity_id: light.bedroom
     service: light.turn_off
   - data:
-      brightness: 25
+      brightness: 10
       power: true
       transition: 600
     entity_id: light.treadmill
@@ -380,7 +381,7 @@ home_assistant_turn_off:
   sequence:
   - data: {}
     service: homeassistant.turn_off
-'1591637774793':
+testing_script:
   alias: Test Script
   sequence:
   - data:
@@ -390,10 +391,21 @@ home_assistant_turn_off:
     service: media_player.volume_set
   - data: {}
     service: tts.google_translate_say
-'1592243604778':
-  alias: Text to Speech Test
+bright_house:
+  alias: Bright House
   sequence:
   - data:
-      entity_id: media_player.google_home_bedroom
-      message: hello
-    service: tts.google_translate_say
+      brightness_pct: 100
+      entity_id:
+      - light.basement
+      - light.bedroom
+      - light.office
+      - light.onekit
+      - light.twokit
+      - light.threekit
+      - light.sofa
+      - light.treadmill
+      kelvin: 4500
+      transition: 5
+      white_value: 250
+    service: light.turn_on

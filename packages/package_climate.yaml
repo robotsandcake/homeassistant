@@ -1,0 +1,93 @@
+# # Door & Window States Package #
+
+# ## This package shows the state of those windows in my house and the icon changes depending on whether they are open closed. ##
+
+# ## OpenWeatherMap Sensor](https://www.home-assistant.io/integrations/openweathermap/#sensor) ##
+# sensor:
+#   - platform: openweathermap
+#     api_key: !secret owm_api_key
+#     name: OWM
+#     # Enable forecast.The default display the currentconditions.
+#     forecast: true
+#     language: en
+#     monitored_conditions:
+#       - weather # A human-readable text summary.
+#       - temperature # The current temperature.
+#       - wind_speed # The wind speed.
+#       - wind_bearing # The wind bearing.
+#       - humidity # The relative humidity.
+#       - pressure # The sea-level air pressure in millibars.
+#       - clouds # Description about cloud coverage.
+#       - rain # The rain volume.
+#       - snow # The snow volume.
+#       - weather_code # The current weather condition code.
+
+# ## The [Darksky](https://www.home-assistant.io/integrations/darksky/) ##
+#   - platform: darksky
+#     api_key: !secret darksky_api_key
+#     name: !secret darksky_sensor_name
+#     latitude: !secret latitude_home
+#     longitude: !secret longitude_home
+#     units: !secret darksky_units
+#     language:  !secret darksky_sensor_language
+#     forecast:
+#       - 0 # Today
+#       - 1 # Tomorrow
+#       - 2 # Day after tomorrow
+#     hourly_forecast:
+#       - 0 # This Hour
+#       - 3 # Three hours from now
+#       - 12 # 12 hours from now
+#     scan_interval:
+#       minutes: 7
+#     monitored_conditions:
+#       - summary
+#       - icon
+#       - precip_type
+#       - precip_intensity
+#       - precip_probability
+#       - precip_accumulation
+#       - temperature
+#       - apparent_temperature
+#       - dew_point
+#       - wind_speed
+#       - wind_gust
+#       - wind_bearing
+#       - cloud_cover
+#       - humidity
+#       - pressure
+#       - visibility
+#       - ozone
+#       - minutely_summary
+#       - hourly_summary
+#       - daily_summary
+#       - temperature_high
+#       - temperature_low
+#       - apparent_temperature_high
+#       - apparent_temperature_low
+#       - precip_intensity_max
+#       - uv_index
+#       - moon_phase
+#       - sunrise_time
+#       - sunset_time
+#       - nearest_storm_distance
+#       - nearest_storm_bearing
+#       - alerts
+
+# ## The OpenWeatherMap weather https://www.home-assistant.io/integrations/openweathermap/#weather ##
+# weather:
+#   - platform: openweathermap
+#     api_key: !secret owm_api_key
+#     name: !secret owm_name
+#     mode: !secret owm_mode
+#     latitude: !secret owm_latitude_home
+#     longitude: !secret owm_longitude_home
+
+# # [Dark Sky Weather](https://www.home-assistant.io/integrations/weather.darksky/) #
+#   - platform: darksky
+#     name: !secret darksky_weather_name
+#     api_key: !secret darksky_api_key
+#     latitude: !secret latitude_home
+#     longitude: !secret longitude_home
+#     units: !secret darksky_units
+#     mode: !secret darksky_mode
