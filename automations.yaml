@@ -1,0 +1,22 @@
+- id: '1599950566225'
+  alias: Basement Window Reminder at Night
+  description: Send one or more remindersDepending on who is in the house to close
+    the basement window in the evening
+  trigger:
+  - at: '23:45'
+    platform: time
+  condition:
+  - condition: state
+    entity_id: binary_sensor.basement_window
+    state: 'on'
+  action:
+  - data:
+      disable_notification: false
+      disable_web_page_preview: false
+      message: please close basement window as it is late and way past its bedtime
+      parse_mode: markdown
+      target: '731090912'
+      timeout: 1000
+      title: Basement Window Reminder
+    service: telegram_bot.send_message
+  mode: single
