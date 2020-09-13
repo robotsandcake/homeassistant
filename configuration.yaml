@@ -1,0 +1,44 @@
+homeassistant:
+  customize: !include customize.yaml
+  customize_glob: !include customize_glob.yaml
+  customize_domain: !include customize_domain.yaml
+  packages: !include_dir_named packages
+  allowlist_external_dirs:
+    - !secret homeassistant_whitelist_external_dirs_00
+
+## Home Assistant API: The api integration exposes a RESTful API and allows interaction with a Home Assistant instance that is running headless. This integration depends on the http integration. https://www.home-assistant.io/integrations/api/ ##
+api:
+
+# This entry enables the the cloud component
+cloud:
+
+## Configuration: The config integration is designed to display panels in the frontend to configure and manage parts of Home Assistant. https://www.home-assistant.io/integrations/config/ ##
+config:
+
+## Configure a default setup of Home Assistant (frontend, api, etc)
+# Example configuration.yaml entry
+default_config:
+
+# Google Translate Text-to-Speech
+tts:
+  - platform: google_translate
+
+# Hass can automatically discover zeroconf/mDNS & UPnP devices on your network for you.
+discovery:
+  ignore:
+    - homekit
+
+# Apple iOS integration
+ios:
+
+## Update Preferences
+updater:
+  reporting: !secret updater_reporting
+  include_used_components: !secret updater_include_used_components
+
+## If your configuration.yaml file is getting out of hand because it is too large (ahem), you should ***REMOVED*** consider splitting your configuration into smaller chunks.  https://home-assistant.io/docs/configuration/splitting_configuration/ ##
+## Files containing information you would like included
+automation: !include automations.yaml
+#group: !include groups.yaml
+scene: !include scenes.yaml
+script: !include scripts.yaml
