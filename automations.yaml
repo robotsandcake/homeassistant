@@ -15,7 +15,7 @@
       disable_web_page_preview: false
       message: please close basement window as it is late and way past its bedtime
       parse_mode: markdown
-      target: '731090912'
+      target: !secret telegram_allowed_chat_id_01
       timeout: 1000
       title: Basement Window Reminder
     service: telegram_bot.send_message
