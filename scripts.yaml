@@ -1,0 +1,33 @@
+code_blue:
+  alias: Code Blue
+  icon: mdi:flag
+  mode: single
+  sequence:
+  - data:
+      brightness: 255
+      color_name: blue
+      cycles: 5
+      entity_id:
+      - light.basement
+      - light.onekit
+      - light.threekit
+      - light.twokit
+      - light.treadmill
+      - light.sofa
+      - light.office
+      mode: breathe
+    service: lifx.effect_pulse
+  - data:
+      brightness: 100
+      color_name: blue
+      cycles: 2
+      entity_id:
+      - light.bedroom
+      mode: breathe
+    service: lifx.effect_pulse
+the_fan:
+  alias: The Fan
+  sequence:
+  - entity_id: switch.the_fan
+    service: switch.toggle
+  mode: single
