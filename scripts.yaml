@@ -31,3 +31,85 @@ the_fan:
   - entity_id: switch.the_fan
     service: switch.toggle
   mode: single
+projector:
+  alias: Projector
+  icon: mdi:projector
+  mode: single
+  sequence:
+  - data:
+      brightness_pct: 100
+      color_name: red
+      entity_id: light.bedroom
+      transition: 30
+    service: light.turn_on
+bedroom_energize:
+  alias: Bedroom Energize Profile
+  mode: single
+  sequence:
+  - data:
+      brightness_pct: 100
+      entity_id: light.bedroom
+      profile: energize
+      transition: 60
+    service: light.turn_on
+new_scriptbright_bedroom_right:
+  alias: Bright Bedroom
+  icon: mdi:brightness-7
+  mode: single
+  sequence:
+  - data:
+      brightness_pct: 100
+      entity_id: light.bedroom
+      kelvin: 5000
+      transition: 10
+      white_value: 255
+    service: light.turn_on
+bright_office:
+  alias: Bright Office
+  mode: single
+  sequence:
+  - data:
+      brightness_pct: 100
+      entity_id: light.office
+      kelvin: 5000
+      transition: 10
+      white_value: 255
+    service: light.turn_on
+bright_kitchen:
+  alias: Bright Kitchen
+  mode: single
+  sequence:
+  - data:
+      brightness_pct: 100
+      entity_id:
+      - light.onekit
+      - light.twokit
+      - light.threekit
+      kelvin: 5000
+      transition: 10
+      white_value: 255
+    service: light.turn_on
+bright_basement:
+  alias: Bright Basement
+  mode: single
+  sequence:
+  - data:
+      brightness_pct: 100
+      entity_id: light.basement
+      kelvin: 5000
+      transition: 10
+      white_value: 255
+    service: light.turn_on
+bright_sitting_room:
+  alias: Bright Sitting Room
+  mode: single
+  sequence:
+  - data:
+      brightness_pct: 100
+      entity_id:
+      - light.sofa
+      - light.treadmill
+      kelvin: 5000
+      transition: 10
+      white_value: 255
+    service: light.turn_on
