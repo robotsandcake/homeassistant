@@ -6,12 +6,13 @@
 !*.yaml
 !.gitignore
 !*.md
-!packages/
+#!packages/
 
 ## Ignore folders.
 .storage
 .cloud
 .google.token
+packages/
 
 ## Files You Don't Need Or Want To See!
 zwave_device_config.yaml
