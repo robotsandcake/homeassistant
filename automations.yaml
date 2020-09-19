@@ -15,8 +15,24 @@
       disable_web_page_preview: false
       message: please close basement window as it is late and way past its bedtime
       parse_mode: markdown
-      target: !secret telegram_allowed_chat_id_01
+      target: '731090912'
       timeout: 1000
       title: Basement Window Reminder
     service: telegram_bot.send_message
+  mode: single
+- id: '1600525359188'
+  alias: IT'S ALIVE!
+  description: Send notification when Home Assistant starts up
+  trigger:
+  - platform: homeassistant
+    event: start
+  condition: []
+  action:
+  - service: lifx.effect_pulse
+    data:
+      entity_id: light.bedroom
+      mode: strobe
+      brightness: 255
+      color_name: green
+      cycles: 3
   mode: single
