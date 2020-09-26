@@ -1,0 +1,19 @@
+# History Component #
+
+## The history integration will track everything that is going on within Home Assistant and allows the user to browse through it. It depends on the recorder component for storing the data and uses the same database setting. If any entities are excluded from being recorded, no history will be available for these entities. https://www.home-assistant.io/integrations/history/ ##
+
+history:
+  include:
+    domains:
+      - light
+      - person
+      - switch
+  exclude:
+    entities:
+     - binary_sensor.updater
+
+## Use this in the Template section of the developer page:
+
+## {{ states | map(attribute='domain') |list | unique | list}}
+
+## ['automation', 'binary_sensor', 'device_tracker', 'light', 'media_player', 'person', 'script', 'sensor', 'sun', 'switch', 'weather', 'zone', 'zwave']
