@@ -42,6 +42,26 @@ projector:
       entity_id: light.bedroom
       transition: 30
     service: light.turn_on
+bedroom_relax:
+  alias: Bedroom Relax Profile
+  mode: single
+  sequence:
+  - data:
+      brightness_pct: 100
+      entity_id: light.bedroom
+      profile: relax
+      transition: 60
+    service: light.turn_on
+bedroom_concentrate:
+  alias: Bedroom Concentrate Profile
+  mode: single
+  sequence:
+  - data:
+      brightness_pct: 100
+      entity_id: light.bedroom
+      profile: concentrate
+      transition: 60
+    service: light.turn_on
 bedroom_energize:
   alias: Bedroom Energize Profile
   mode: single
@@ -50,6 +70,16 @@ bedroom_energize:
       brightness_pct: 100
       entity_id: light.bedroom
       profile: energize
+      transition: 60
+    service: light.turn_on
+bedroom_reading:
+  alias: Bedroom Reading Profile
+  mode: single
+  sequence:
+  - data:
+      brightness_pct: 100
+      entity_id: light.bedroom
+      profile: reading
       transition: 60
     service: light.turn_on
 new_scriptbright_bedroom_right:
@@ -112,4 +142,76 @@ bright_sitting_room:
       kelvin: 5000
       transition: 10
       white_value: 255
+    service: light.turn_on
+house_relax:
+  alias: Profile House Relax
+  mode: single
+  sequence:
+  - data:
+      brightness_pct: 100
+      entity_id:
+        - light.bedroom
+        - light.basement
+        - light.office
+        - light.treadmill
+        - light.sofa
+        - light.onekit
+        - light.threekit
+        - light.twokit
+      profile: relax
+      transition: 60
+    service: light.turn_on
+house_concentrate:
+  alias: Profile House Concentrate
+  mode: single
+  sequence:
+  - data:
+      brightness_pct: 100
+      entity_id:
+        - light.bedroom
+        - light.basement
+        - light.office
+        - light.treadmill
+        - light.sofa
+        - light.onekit
+        - light.threekit
+        - light.twokit
+      profile: concentrate
+      transition: 60
+    service: light.turn_on
+profile_house_energize:
+  alias: Profile House Energize
+  mode: single
+  sequence:
+  - data:
+      brightness_pct: 100
+      entity_id:
+        - light.bedroom
+        - light.basement
+        - light.office
+        - light.treadmill
+        - light.sofa
+        - light.onekit
+        - light.threekit
+        - light.twokit
+      profile: energize
+      transition: 60
+    service: light.turn_on
+profile_house_reading:
+  alias: Profile House Reading
+  mode: single
+  sequence:
+  - data:
+      brightness_pct: 100
+      entity_id:
+        - light.bedroom
+        - light.basement
+        - light.office
+        - light.treadmill
+        - light.sofa
+        - light.onekit
+        - light.threekit
+        - light.twokit
+      profile: reading
+      transition: 60
     service: light.turn_on
