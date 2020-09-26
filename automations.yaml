@@ -76,3 +76,59 @@
       kelvin: 54000
       brightness_pct: 100
   mode: single
+- id: '1601105342840'
+  alias: Z-Wave Ready
+  description: Send notification when the Z-Wave network is ready for use.
+  trigger:
+  - platform: event
+    event_type: zwave.network_ready
+    event_data: {}
+  condition: []
+  action:
+  - service: telegram_bot.send_message
+    data:
+      message: Z-Wave network is ready
+  mode: single
+- id: '1601105699456'
+  alias: Z-Wave Network Complete
+  description: Send notification when the Z-Wave network is Complete.
+  trigger:
+  - platform: event
+    event_type: zwave.network_complete
+    event_data: {}
+  condition: []
+  action:
+  - service: telegram_bot.send_message
+    data:
+      message: Z-Wave network is Complete
+  - service: lifx.effect_pulse
+    data:
+      mode: blink
+      brightness: 255
+      color_name: green
+      cycles: 2
+      power_on: false
+    entity_id: light.bedroom
+  mode: single
+- id: '1601105763293'
+  alias: Z-Wave Network Complete some Dead
+  description: Send notification when the Z-Wave network is Complete but with some
+    dad knows he didn't make it
+  trigger:
+  - platform: event
+    event_type: zwave.network_complete
+    event_data: {}
+  condition: []
+  action:
+  - service: telegram_bot.send_message
+    data:
+      message: Z-Wave network is Complete
+  - service: lifx.effect_pulse
+    data:
+      mode: blink
+      brightness: 255
+      color_name: green
+      cycles: 4
+      power_on: false
+    entity_id: light.bedroom
+  mode: single
