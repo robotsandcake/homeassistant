@@ -1,9 +1,0 @@
-# Pico TTS #
-
-## The picotts text-to-speech platform uses offline pico Text-to-Speech engine to read a text with natural sounding voices. This requires to install the pico TTS library on the system, typically on Debian just do sudo apt-get install libttspico-utils On some Raspbian release, this package is missing but you can just copy the arm deb package from Debian. https://www.home-assistant.io/integrations/picotts/ ##
-
-# Full configuration example, The configuration sample below shows how an entry can look like:
-# tts:
-#   - platform: picotts
-
-## Supported languages are en-US, en-GB, de-DE, es-ES, fr-FR and it-IT. language: en-US <-- Default
