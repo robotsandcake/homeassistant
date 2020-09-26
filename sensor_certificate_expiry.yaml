@@ -1,0 +1,39 @@
+# Certificate Expiry Sensor #
+
+## The cert_expiry integration fetches the certificate from a configured host and displays its expiration in both timestamp and days-to-expiry sensors. https://www.home-assistant.io/integrations/cert_expiry ##
+
+# sensor:
+#   - platform: cert_expiry
+#     host: !secret cert_expiry_host_01
+#     port: 443
+#     scan_interval: 3600
+#   - platform: cert_expiry
+#     host: !secret cert_expiry_host_02
+#     port: 443
+#     scan_interval: 3600
+#   - platform: cert_expiry
+#     host: !secret cert_expiry_host_03
+#     port: 443
+#     scan_interval: 3600
+#   - platform: cert_expiry
+#     host: !secret cert_expiry_host_04
+#     port: 443
+#     scan_interval: 3600
+#   - platform: cert_expiry
+#     host: !secret cert_expiry_host_05
+#     port: 443
+#     scan_interval: 3600
+#   - platform: cert_expiry
+#     host: !secret cert_expiry_host_06
+#     port: 443
+#     scan_interval: 3600
+#   - platform: cert_expiry
+#     host: !secret cert_expiry_host_07
+#     port: 443
+#     scan_interval: 3600
+#   - platform: cert_expiry
+#     host: !secret cert_expiry_host_08
+#     port: 443
+#     scan_interval: 3600
+
+

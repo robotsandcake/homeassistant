@@ -1,0 +1,16 @@
+# DD-WRT Device Tracker #
+
+## This platform offers presence detection by looking at connected devices to a DD-WRT based router. https://www.home-assistant.io/integrations/ddwrt/
+
+# device_tracker:
+#   - platform: ddwrt
+#     host: !secret ddwrt_host
+#     username: !secret ddwrt_username
+#     password: !secret ddwrt_password
+#     ssl: !secret ddwrt_ssl
+#     verify_ssl: !secret ddwrt_verify_ssl
+#     wireless_only: !secret ddwrt_wireless_only
+#     interval_seconds: !secret ddwrt_interval_seconds
+#     consider_home: !secret ddwrt_consider_home
+#     new_device_defaults:
+#       track_new_devices: !secret ddwrt_track_new_devices

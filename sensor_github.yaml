@@ -1,0 +1,13 @@
+# Github Sensor #
+
+## The GitHub sensor integrates data from [GitHub](https://github.com/) to monitor your favorite repositories. https://www.home-assistant.io/integrations/github/  ##
+
+# sensor:
+#   - platform: github
+#     access_token: !secret github_access_token
+#     repositories:
+#       - path: 'home-assistant/core'
+#       - path: !secret github_repositories_path_00
+#       - path: !secret github_repositories_path_01
+
+## To set up this sensor you will need a [personal access token](https://github.com/settings/tokens). You will need to check the repo scope for the sensor to function. ##

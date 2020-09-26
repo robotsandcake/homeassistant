@@ -1,0 +1,19 @@
+# NMap Device Tracker #
+
+## This package uses a number of different components to keep track of devices on my network.  That is, whether they are online/off-line and when new devices connect.  The dynamic results these trackers provide can be used by sensors, automations, scripts and templates to display the information and use it as you wish. https://www.home-assistant.io/integrations/nmap_tracker/ ##
+
+# device_tracker:
+#   - platform: nmap_tracker
+#     hosts:
+#       - 192.168.4.0/24
+#       - 10.0.0.0/24
+#       - 10.0.0.15
+#     exclude:
+#      - 10.0.0.63
+#      - 192.168.4.21
+#     scan_options: " --privileged -sP "
+#     interval_seconds: 60
+#     home_interval: 10
+#     consider_home: 180
+#     new_device_defaults:
+#       track_new_devices: true
