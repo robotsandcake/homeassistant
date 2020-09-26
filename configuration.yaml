@@ -24,8 +24,6 @@ discovery:
   ignore:
     - homekit
 
-homekit:
-  autostart: false
 # Apple iOS integration
 ios:
 

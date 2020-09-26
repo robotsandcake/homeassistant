@@ -1,0 +1,26 @@
+# Recorder #
+
+## The recorder integration is responsible for storing details in a database, which then are handled by the history integration. https://www.home-assistant.io/integrations/recorder/ ##
+
+recorder:
+  auto_purge: true
+  commit_interval: 3
+  db_integrity_check: true
+  db_max_retries: 10
+  db_retry_wait: 5
+  purge_keep_days: 60
+  db_url: !secret recorder_db_url
+  exclude:
+    domains:
+      - automation
+      - updater
+    entity_globs:
+      - sensor.otp_*
+      - sensor.*_previous_reading
+      - binary_sensor.updater
+    # entities:
+    #   - sun.sun # Don't record sun data
+    #   - sensor.last_boot # Comes from 'systemmonitor' sensor platform
+    #   - sensor.date
+    # event_types:
+    #   - call_service # Don't record service calls
