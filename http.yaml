@@ -8,8 +8,8 @@ http:
   server_host: !secret http_server_host
   ssl_certificate: !secret http_ssl_certificate
   ssl_key: !secret http_ssl_key
-  use_x_forwarded_for: !secret http_use_x_forwarded
-  trusted_proxies:
-    - !secret http_trusted_proxy
+  # use_x_forwarded_for: !secret http_use_x_forwarded
+  # trusted_proxies:
+  #   - !secret http_trusted_proxy
   ip_ban_enabled: !secret http_ip_ban_enabled
   login_attempts_threshold: !secret http_login_attempts_threshold
