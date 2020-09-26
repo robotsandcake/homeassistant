@@ -1,9 +1,9 @@
 - id: '1599950566225'
-  alias: Basement Window Reminder at Night
+  alias: Reminder to close the Cellar Window at Night
   description: Send one or more remindersDepending on who is in the house to close
     the basement window in the evening
   trigger:
-  - at: '23:45'
+  - at: '23:30'
     platform: time
   condition:
   - condition: state
@@ -28,11 +28,66 @@
     event: start
   condition: []
   action:
-  - service: lifx.effect_pulse
+  - service: telegram_bot.send_location
     data:
-      entity_id: light.bedroom
-      mode: strobe
-      brightness: 255
-      color_name: green
-      cycles: 3
+      latitude: '{{ states.person.stuart.attributes.latitude }}'
+      longitude: '{{ states.person.stuart.attributes.longitude }}'
+      target: '731090912'
+      disable_notification: false
+      timeout: 1000
+  - service: telegram_bot.send_message
+    data:
+      message: Home assistant has come to life
+  mode: single
+- id: '1600594353689'
+  alias: Sunrise in the House
+  description: Simulate sunrise everywhere in the house.
+  trigger:
+  - platform: time
+    at: 06:00
+  condition: []
+  action:
+  - service: light.turn_on
+    data:
+      entity_id:
+      - light.twokit
+      - light.basement
+      - light.bedroom
+      - light.office
+      - light.onekit
+      - light.sofa
+      - light.threekit
+      - light.treadmill
+      transition: 3610
+      kelvin: 54000
+      brightness_pct: 100
+  mode: single
+- id: '1600594791855'
+  alias: Sunrise in the Bedroom
+  description: Simulate sunrise In my bedroom acting as a silent Dawn Clock.
+  trigger:
+  - platform: time
+    at: 06:55
+  condition: []
+  action:
+  - service: light.turn_on
+    data:
+      entity_id:
+      - light.bedroom
+      transition: 300
+      kelvin: 54000
+      brightness_pct: 100
+  mode: single
+- id: '1601069218358'
+  alias: SSL Certificate Expiry Reminder
+  description: ''
+  trigger:
+  - platform: numeric_state
+    entity_id: sensor.cert_expiry_robotsandcake_org
+    below: '10'
+  condition: []
+  action:
+  - service: telegram_bot.send_message
+    data:
+      message: Check SSL
   mode: single

@@ -10,24 +10,22 @@ homeassistant:
 api:
 
 # This entry enables the the cloud component
-cloud:
+#cloud:
 
 ## Configuration: The config integration is designed to display panels in the frontend to configure and manage parts of Home Assistant. https://www.home-assistant.io/integrations/config/ ##
 config:
 
-## Configure a default setup of Home Assistant (frontend, api, etc)
-# Example configuration.yaml entry
-default_config:
 
-# Google Translate Text-to-Speech
-tts:
-  - platform: google_translate
+## Configure a default setup of Home Assistant (frontend, api, etc)
+default_config:
 
 # Hass can automatically discover zeroconf/mDNS & UPnP devices on your network for you.
 discovery:
   ignore:
     - homekit
 
+homekit:
+  autostart: false
 # Apple iOS integration
 ios:
 
