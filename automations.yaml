@@ -15,7 +15,6 @@
       disable_web_page_preview: false
       message: please close basement window as it is late and way past its bedtime
       parse_mode: markdown
-      target: '731090912'
       timeout: 1000
       title: Basement Window Reminder
     service: telegram_bot.send_message
@@ -32,7 +31,6 @@
     data:
       latitude: '{{ states.person.stuart.attributes.latitude }}'
       longitude: '{{ states.person.stuart.attributes.longitude }}'
-      target: '731090912'
       disable_notification: false
       timeout: 1000
   - service: telegram_bot.send_message
@@ -77,17 +75,4 @@
       transition: 300
       kelvin: 54000
       brightness_pct: 100
-  mode: single
-- id: '1601069218358'
-  alias: SSL Certificate Expiry Reminder
-  description: ''
-  trigger:
-  - platform: numeric_state
-    entity_id: sensor.cert_expiry_robotsandcake_org
-    below: '10'
-  condition: []
-  action:
-  - service: telegram_bot.send_message
-    data:
-      message: Check SSL
   mode: single
