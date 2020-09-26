@@ -12,7 +12,7 @@
 .storage
 .cloud
 .google.token
-packages/
+#packages/
 
 ## Files You Don't Need Or Want To See!
 zwave_device_config.yaml
@@ -20,8 +20,6 @@ scenes.yaml
 customize.yaml
 customize_domain.yaml
 customize_glob.yaml
-mqtt_component_temp.md
-home_assistant_installing_mosquitto.md
 
 ## Ignore annoying Mac files
 .DS_Store
