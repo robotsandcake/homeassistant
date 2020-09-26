@@ -17,3 +17,26 @@ history:
 ## {{ states | map(attribute='domain') |list | unique | list}}
 
 ## ['automation', 'binary_sensor', 'device_tracker', 'light', 'media_player', 'person', 'script', 'sensor', 'sun', 'switch', 'weather', 'zone', 'zwave']
+# History Component #
+
+## The history integration will track everything that is going on within Home Assistant and allows the user to browse through it. It depends on the recorder component for storing the data and uses the same database setting. If any entities are excluded from being recorded, no history will be available for these entities. https://www.home-assistant.io/integrations/history/ ##
+
+
+# Example configuration.yaml entry using specified entity display order
+# history:
+#   use_include_order: true
+#   include:
+#     domains:
+#       - input_number
+#       - light
+#     entities:
+#       - switch.the_fan
+#   exclude:
+#     entities:
+#      - device_tracker.dietpi_home
+
+## Use this in the Template section of the developer page:
+
+## {{ states | map(attribute='domain') |list | unique | list}}
+
+## ['automation', 'binary_sensor', 'device_tracker', 'input_number', 'light', 'media_player', 'persistent_notification', 'person', 'script', 'sensor', 'sun', 'switch', 'weather', 'zone', 'zwave']
