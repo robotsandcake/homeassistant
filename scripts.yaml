@@ -62,16 +62,6 @@ bedroom_concentrate:
       profile: concentrate
       transition: 60
     service: light.turn_on
-bedroom_energize:
-  alias: Bedroom Energize Profile
-  mode: single
-  sequence:
-  - data:
-      brightness_pct: 100
-      entity_id: light.bedroom
-      profile: energize
-      transition: 60
-    service: light.turn_on
 bedroom_reading:
   alias: Bedroom Reading Profile
   mode: single
@@ -150,14 +140,14 @@ house_relax:
   - data:
       brightness_pct: 100
       entity_id:
-        - light.bedroom
-        - light.basement
-        - light.office
-        - light.treadmill
-        - light.sofa
-        - light.onekit
-        - light.threekit
-        - light.twokit
+      - light.bedroom
+      - light.basement
+      - light.office
+      - light.treadmill
+      - light.sofa
+      - light.onekit
+      - light.threekit
+      - light.twokit
       profile: relax
       transition: 60
     service: light.turn_on
@@ -168,14 +158,14 @@ house_concentrate:
   - data:
       brightness_pct: 100
       entity_id:
-        - light.bedroom
-        - light.basement
-        - light.office
-        - light.treadmill
-        - light.sofa
-        - light.onekit
-        - light.threekit
-        - light.twokit
+      - light.bedroom
+      - light.basement
+      - light.office
+      - light.treadmill
+      - light.sofa
+      - light.onekit
+      - light.threekit
+      - light.twokit
       profile: concentrate
       transition: 60
     service: light.turn_on
@@ -186,14 +176,14 @@ profile_house_energize:
   - data:
       brightness_pct: 100
       entity_id:
-        - light.bedroom
-        - light.basement
-        - light.office
-        - light.treadmill
-        - light.sofa
-        - light.onekit
-        - light.threekit
-        - light.twokit
+      - light.bedroom
+      - light.basement
+      - light.office
+      - light.treadmill
+      - light.sofa
+      - light.onekit
+      - light.threekit
+      - light.twokit
       profile: energize
       transition: 60
     service: light.turn_on
@@ -204,14 +194,35 @@ profile_house_reading:
   - data:
       brightness_pct: 100
       entity_id:
-        - light.bedroom
-        - light.basement
-        - light.office
-        - light.treadmill
-        - light.sofa
-        - light.onekit
-        - light.threekit
-        - light.twokit
+      - light.bedroom
+      - light.basement
+      - light.office
+      - light.treadmill
+      - light.sofa
+      - light.onekit
+      - light.threekit
+      - light.twokit
       profile: reading
       transition: 60
     service: light.turn_on
+profile_bedroom_energise:
+  alias: Profile Bedroom Energise
+  sequence:
+  - service: light.turn_on
+    data:
+      brightness_pct: 100
+      entity_id:
+      - light.bedroom
+      profile: energize
+      transition: 60
+  mode: single
+30_minute_red_fade:
+  alias: 30 Minute Red Fade
+  sequence:
+  - service: light.turn_on
+    data:
+      transition: 150
+      brightness_pct: 100
+    entity_id: light.bedroom
+  mode: single
+  icon: mdi:weather-sunset
