@@ -132,3 +132,19 @@
       power_on: false
     entity_id: light.bedroom
   mode: single
+- id: '1601159450813'
+  alias: Sunset in Bedroom
+  description: Simulate sunset in the bedroom to remove blue wave light from sleep
+    routine
+  trigger:
+  - platform: time
+    at: '19:15'
+  condition: []
+  action:
+  - service: light.turn_on
+    data:
+      entity_id: light.bedroom
+      transition: 2700
+      color_name: red
+      brightness_pct: 100
+  mode: single
