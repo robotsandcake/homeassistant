@@ -28,8 +28,9 @@ code_blue:
 the_fan:
   alias: The Fan
   sequence:
-  - entity_id: switch.the_fan
-    service: switch.toggle
+  - service: switch.toggle
+    data: {}
+    entity_id: switch.the_fan
   mode: single
 projector:
   alias: Projector
@@ -221,7 +222,50 @@ profile_bedroom_energise:
   sequence:
   - service: light.turn_on
     data:
-      transition: 150
+      transition: 1800
+      brightness_pct: 100
+    entity_id: light.bedroom
+  mode: single
+  icon: mdi:weather-sunset
+60_minute_red_fade:
+  alias: 60 Minute Red Fade
+  sequence:
+  - service: light.turn_on
+    data:
+      transition: 3600
+      brightness_pct: 100
+    entity_id: light.bedroom
+  mode: single
+  icon: mdi:weather-sunset
+10_minute_red_fade:
+  alias: 10 Minute Red Fade
+  sequence:
+  - service: light.turn_on
+    data:
+      transition: 600
+      color_name: red
+      brightness_pct: 100
+    entity_id: light.bedroom
+  mode: single
+  icon: mdi:weather-sunset
+5_minute_red_fade:
+  alias: 01 Minute Red Fade
+  sequence:
+  - service: light.turn_on
+    data:
+      transition: 60
+      color_name: red
+      brightness_pct: 100
+    entity_id: light.bedroom
+  mode: single
+  icon: mdi:weather-sunset
+05_minute_red_fade:
+  alias: 05 Minute Red Fade
+  sequence:
+  - service: light.turn_on
+    data:
+      transition: 300
+      color_name: red
       brightness_pct: 100
     entity_id: light.bedroom
   mode: single

@@ -134,17 +134,23 @@
   mode: single
 - id: '1601159450813'
   alias: Sunset in Bedroom
-  description: Simulate sunset in the bedroom to remove blue wave light from sleep
-    routine
+  description: From user selected lighting, begin to simulate lighting conditions
+    at sunset help with sleep hygiene
   trigger:
   - platform: time
-    at: '19:15'
+    at: 04:38
   condition: []
   action:
-  - service: light.turn_on
+  - service: lifx.set_state
     data:
-      entity_id: light.bedroom
-      transition: 2700
       color_name: red
       brightness_pct: 100
+      transition: 300
+      power: true
+    entity_id: light.bedroom
+  - service: persistent_notification.create
+    data:
+      message: By the power of Grey Skull, sunset declared.
+      title: Sunset
+      notification_id: persistent_sunset
   mode: single
