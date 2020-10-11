@@ -19,8 +19,8 @@ config:
 ## Configure a default setup of Home Assistant (frontend, api, etc)
 default_config:
 
+mobile_app:
 
-# zeroconf:
 
 # Apple iOS integration
 ios:
