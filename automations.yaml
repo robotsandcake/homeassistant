@@ -37,29 +37,6 @@
     data:
       message: Home assistant has come to life
   mode: single
-- id: '1600594353689'
-  alias: Sunrise in the House
-  description: Simulate sunrise everywhere in the house.
-  trigger:
-  - platform: time
-    at: 06:00
-  condition: []
-  action:
-  - service: light.turn_on
-    data:
-      entity_id:
-      - light.twokit
-      - light.basement
-      - light.bedroom
-      - light.office
-      - light.onekit
-      - light.sofa
-      - light.threekit
-      - light.treadmill
-      transition: 3610
-      kelvin: 54000
-      brightness_pct: 100
-  mode: single
 - id: '1600594791855'
   alias: Sunrise in the Bedroom
   description: Simulate sunrise In my bedroom acting as a silent Dawn Clock.
@@ -70,11 +47,13 @@
   action:
   - service: light.turn_on
     data:
-      entity_id:
-      - light.bedroom
-      transition: 300
-      kelvin: 54000
+      entity_id: light.bedroom
+      transition: 900
+      kelvin: 5400
       brightness_pct: 100
+  - service: persistent_notification.create
+    data:
+      message: bedroom sunrise
   mode: single
 - id: '1601105342840'
   alias: Z-Wave Ready
@@ -153,4 +132,30 @@
       message: By the power of Grey Skull, sunset declared.
       title: Sunset
       notification_id: persistent_sunset
+  mode: single
+- id: '1602052371260'
+  alias: Sunrise in the rest of the House
+  description: Simulate sunrise In rest of the House acting as a silent Dawn Clock.
+  trigger:
+  - platform: time
+    at: 07:35
+  condition: []
+  action:
+  - service: light.turn_on
+    data:
+      entity_id:
+      - light.bedroom
+      - light.basement
+      - light.office
+      - light.treadmill
+      - light.sofa
+      - light.onekit
+      - light.threekit
+      - light.twokit
+      transition: 900
+      kelvin: 5400
+      brightness_pct: 100
+  - service: persistent_notification.create
+    data:
+      message: Rest of the House Sunrise
   mode: single
