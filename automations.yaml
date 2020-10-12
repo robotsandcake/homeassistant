@@ -3,7 +3,7 @@
   description: Send one or more remindersDepending on who is in the house to close
     the basement window in the evening
   trigger:
-  - at: '23:30'
+  - at: '23:00'
     platform: time
   condition:
   - condition: state
@@ -50,7 +50,9 @@
       entity_id: light.bedroom
       transition: 900
       kelvin: 5400
+      white_value: 250
       brightness_pct: 100
+    entity_id: light.bedroom
   - service: persistent_notification.create
     data:
       message: bedroom sunrise
@@ -117,15 +119,15 @@
     at sunset help with sleep hygiene
   trigger:
   - platform: time
-    at: 04:38
+    at: '20:56'
   condition: []
   action:
-  - service: lifx.set_state
+  - service: light.turn_on
     data:
-      color_name: red
-      brightness_pct: 100
+      entity_id: light.bedroom
       transition: 300
-      power: true
+      color_name: red
+      brightness: 100
     entity_id: light.bedroom
   - service: persistent_notification.create
     data:
@@ -138,13 +140,12 @@
   description: Simulate sunrise In rest of the House acting as a silent Dawn Clock.
   trigger:
   - platform: time
-    at: 07:35
+    at: 06:30
   condition: []
   action:
   - service: light.turn_on
     data:
       entity_id:
-      - light.bedroom
       - light.basement
       - light.office
       - light.treadmill
@@ -154,6 +155,7 @@
       - light.twokit
       transition: 900
       kelvin: 5400
+      white_value: 250
       brightness_pct: 100
   - service: persistent_notification.create
     data:
