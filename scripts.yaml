@@ -20,7 +20,94 @@ code_blue:
   - data:
       brightness: 100
       color_name: blue
-      cycles: 2
+      cycles: 1
+      entity_id:
+      - light.bedroom
+      mode: breathe
+    service: lifx.effect_pulse
+code_blue_basement:
+  alias: Code Blue Basement
+  icon: mdi:flag
+  mode: single
+  sequence:
+  - data:
+      brightness: 255
+      color_name: blue
+      cycles: 5
+      entity_id:
+      - light.basement
+      mode: breathe
+    service: lifx.effect_pulse
+  - data:
+      brightness: 100
+      color_name: blue
+      cycles: 1
+      entity_id:
+      - light.bedroom
+      mode: breathe
+    service: lifx.effect_pulse
+code_blue_kitchen:
+  alias: Code Blue Kitchen
+  icon: mdi:flag
+  mode: single
+  sequence:
+  - data:
+      brightness: 255
+      color_name: blue
+      cycles: 5
+      entity_id:
+      - light.onekit
+      - light.threekit
+      - light.twokit
+      mode: breathe
+    service: lifx.effect_pulse
+  - data:
+      brightness: 100
+      color_name: blue
+      cycles: 1
+      entity_id:
+      - light.bedroom
+      mode: breathe
+    service: lifx.effect_pulse
+code_blue_sitting_room:
+  alias: Code Blue Sitting Room
+  icon: mdi:flag
+  mode: single
+  sequence:
+  - data:
+      brightness: 255
+      color_name: blue
+      cycles: 5
+      entity_id:
+      - light.treadmill
+      - light.sofa
+      mode: breathe
+    service: lifx.effect_pulse
+  - data:
+      brightness: 100
+      color_name: blue
+      cycles: 1
+      entity_id:
+      - light.bedroom
+      mode: breathe
+    service: lifx.effect_pulse
+code_blue_office:
+  alias: Code Blue Office
+  icon: mdi:flag
+  mode: single
+  sequence:
+  - data:
+      brightness: 255
+      color_name: blue
+      cycles: 5
+      entity_id:
+      - light.office
+      mode: breathe
+    service: lifx.effect_pulse
+  - data:
+      brightness: 100
+      color_name: blue
+      cycles: 1
       entity_id:
       - light.bedroom
       mode: breathe
