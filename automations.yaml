@@ -68,7 +68,10 @@
   action:
   - service: telegram_bot.send_message
     data:
-      message: Z-Wave network is ready
+      message: Z-Wave Network Is Ready For Use.
+  - service: notify.notify
+    data:
+      message: Z-Wave Network Is Ready For Use.
   mode: single
 - id: '1601105699456'
   alias: Z-Wave Network Complete
@@ -160,4 +163,17 @@
   - service: persistent_notification.create
     data:
       message: Rest of the House Sunrise
+  mode: single
+- id: '1602537280292'
+  alias: Z-Wave Network Beginning Start-Up
+  description: Send notification when the Z-Wave network begins its start-up sequence.
+  trigger:
+  - platform: event
+    event_type: zwave.network_start
+    event_data: {}
+  condition: []
+  action:
+  - service: telegram_bot.send_message
+    data:
+      message: Z-Wave network is Beginning startup
   mode: single
