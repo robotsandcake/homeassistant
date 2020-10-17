@@ -16,19 +16,13 @@ cloud:
 ## Configuration: The config integration is designed to display panels in the frontend to configure and manage parts of Home Assistant. https://www.home-assistant.io/integrations/config/ ##
 config:
 
-
 ## Configure a default setup of Home Assistant (frontend, api, etc)
 default_config:
 
 mobile_app:
 
-
 # Apple iOS integration
 ios:
-
-# Using counter to count errors as caught by Home Assistant, you need to add fire_event: `true` to your configuration.yaml, like so:
-system_log:
-  fire_event: true
 
 
 ## Update Preferences
