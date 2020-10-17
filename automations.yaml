@@ -57,65 +57,6 @@
     data:
       message: bedroom sunrise
   mode: single
-- id: '1601105342840'
-  alias: Z-Wave Ready
-  description: Send notification when the Z-Wave network is ready for use.
-  trigger:
-  - platform: event
-    event_type: zwave.network_ready
-    event_data: {}
-  condition: []
-  action:
-  - service: telegram_bot.send_message
-    data:
-      message: Z-Wave Network Is Ready For Use.
-  - service: notify.notify
-    data:
-      message: Z-Wave Network Is Ready For Use.
-  mode: single
-- id: '1601105699456'
-  alias: Z-Wave Network Complete
-  description: Send notification when the Z-Wave network is Complete.
-  trigger:
-  - platform: event
-    event_type: zwave.network_complete
-    event_data: {}
-  condition: []
-  action:
-  - service: telegram_bot.send_message
-    data:
-      message: Z-Wave network is Complete
-  - service: lifx.effect_pulse
-    data:
-      mode: blink
-      brightness: 255
-      color_name: green
-      cycles: 2
-      power_on: false
-    entity_id: light.bedroom
-  mode: single
-- id: '1601105763293'
-  alias: Z-Wave Network Complete some Dead
-  description: Send notification when the Z-Wave network is Complete but with some
-    dad knows he didn't make it
-  trigger:
-  - platform: event
-    event_type: zwave.network_complete
-    event_data: {}
-  condition: []
-  action:
-  - service: telegram_bot.send_message
-    data:
-      message: Z-Wave network is Complete
-  - service: lifx.effect_pulse
-    data:
-      mode: blink
-      brightness: 255
-      color_name: green
-      cycles: 4
-      power_on: false
-    entity_id: light.bedroom
-  mode: single
 - id: '1601159450813'
   alias: Sunset in Bedroom
   description: From user selected lighting, begin to simulate lighting conditions
@@ -176,4 +117,82 @@
   - service: telegram_bot.send_message
     data:
       message: Z-Wave network is Beginning startup
+  - service: persistent_notification.create
+    data:
+      message: Home assistant has Begun Z-Wave start-up process
+      title: Z-Wave is Starting
+      notification_id: ZWave is Starting
+  mode: single
+- id: '1602615694012'
+  alias: Z-Wave Network Has Stopped
+  description: Send notification when the Z-Wave network Stops running
+  trigger:
+  - platform: event
+    event_type: zwave.network_stop
+    event_data: {}
+  condition: []
+  action:
+  - service: telegram_bot.send_message
+    data:
+      message: Z-Wave network Has stopped
+  - service: persistent_notification.create
+    data:
+      message: Z-Wave Network has stopped
+      title: Z-Wave has stopped
+      notification_id: ZWave has Stopped
+  mode: single
+- id: '1602615770606'
+  alias: Z-Wave Network is Ready for Use
+  description: Send notification when the Z-Wave network  is ready
+  trigger:
+  - platform: event
+    event_type: zwave.network_ready
+    event_data: {}
+  condition: []
+  action:
+  - service: telegram_bot.send_message
+    data:
+      message: Z-Wave Network is Ready
+  - service: persistent_notification.create
+    data:
+      message: Z-Wave Network is Ready
+      title: Z-Wave Network is Ready
+      notification_id: Z-Wave Network is Ready
+  mode: single
+- id: '1602615938061'
+  alias: Z-Wave Network is Completely Ready With some Dead Nodes
+  description: Send notification when the Z-Wave network  completely ready with a
+    few dead nodes
+  trigger:
+  - platform: event
+    event_type: zwave.network_complete_some_dead
+    event_data: {}
+  condition: []
+  action:
+  - service: telegram_bot.send_message
+    data:
+      message: Z-Wave Network Completely Ready With A Few Dead Nodes
+  - service: persistent_notification.create
+    data:
+      message: Z-Wave Network Completely Ready With A Few Dead Nodes
+      title: Z-Wave Network Completely Ready With A Few Dead Nodes
+      notification_id: Z-Wave Network Completely Ready With A Few Dead Nodes
+  mode: single
+- id: '1602631321182'
+  alias: Z-Wave Network is Complete
+  description: Send notification when the Z-Wave network  is Considered Complete
+  trigger:
+  - platform: event
+    event_type: zwave.network_complete
+    event_data: {}
+  condition: []
+  action:
+  - service: telegram_bot.send_message
+    data:
+      message: Z-Wave network  is Considered Complete
+  - service: persistent_notification.create
+    data:
+      message: Z-Wave network is...
+      title: Z-Wave network  is Considered Complete
+      notification_id: Z-Wave network  is Considered Complete
   mode: single
