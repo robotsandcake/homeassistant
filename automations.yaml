@@ -1,6 +1,6 @@
 - id: '1599950566225'
   alias: Reminder to close the Cellar Window at Night
-  description: Send one or more remindersDepending on who is in the house to close
+  description: Send one or more reminders depending on who is in the house to close
     the basement window in the evening
   trigger:
   - at: '23:00'
@@ -42,13 +42,13 @@
   description: Simulate sunrise In my bedroom acting as a silent Dawn Clock.
   trigger:
   - platform: time
-    at: 06:55
+    at: 06:50
   condition: []
   action:
   - service: light.turn_on
     data:
       entity_id: light.bedroom
-      transition: 900
+      transition: 600
       kelvin: 5400
       white_value: 250
       brightness_pct: 100
@@ -69,7 +69,7 @@
   - service: light.turn_on
     data:
       entity_id: light.bedroom
-      transition: 300
+      transition: 30
       color_name: red
       brightness: 100
     entity_id: light.bedroom
@@ -80,11 +80,11 @@
       notification_id: persistent_sunset
   mode: single
 - id: '1602052371260'
-  alias: Sunrise in the rest of the House
-  description: Simulate sunrise In rest of the House acting as a silent Dawn Clock.
+  alias: Sunrise in da House
+  description: Automation to simulate Sunrise in every room except the bedroom.
   trigger:
   - platform: time
-    at: 06:30
+    at: 06:50
   condition: []
   action:
   - service: light.turn_on
@@ -195,4 +195,40 @@
       message: Z-Wave network is...
       title: Z-Wave network  is Considered Complete
       notification_id: Z-Wave network  is Considered Complete
+  mode: single
+- id: '1603176384593'
+  alias: Torrent Has Started Downloading Transmission Notification
+  description: Receive notification when your completely legal "Linux ISO" start downloading
+    in Transmission
+  trigger:
+  - platform: event
+    event_type: transmission_started_torrent
+    event_data: {}
+  condition: []
+  action:
+  - service: persistent_notification.create
+    data:
+      title: A Torrent Has Started Downloading!
+      message: The file {{trigger.event.data.name}} has started to download
+      notification_id: transmissionStarted
+  - service: telegram_bot.send_message
+    data:
+      title: A Torrent Has Started Downloading!
+      message: The file {{trigger.event.data.name}} has started to download
+  mode: single
+- id: '1603276142404'
+  alias: Tag The Boss is scanned
+  description: ''
+  trigger:
+  - platform: tag
+    tag_id: 345d97e0-82f3-4560-8593-7f10655413c0
+  condition: []
+  action:
+  - service: tts.cloud_say
+    data:
+      message: Katie has a big smell head!
+      entity_id: media_player.office_mini
+  - service: light.turn_off
+    data: {}
+    entity_id: light.bedroom
   mode: single

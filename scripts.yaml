@@ -117,7 +117,7 @@ the_fan:
   sequence:
   - service: switch.toggle
     data: {}
-    entity_id: switch.the_fan
+    entity_id: switch.fan
   mode: single
 projector:
   alias: Projector
