@@ -18,8 +18,10 @@ default_config:
 # Apple iOS integration
 ios:
 
-
+## https://www.home-assistant.io/integrations/cloud
 cloud:
+
+config:
 
 ## Update Preferences
 updater:
@@ -29,11 +31,10 @@ updater:
 # To enable the zodiac integration, add the following lines to your configuration.yaml. https://www.home-assistant.io/integrations/zodiac/
 zodiac:
 
-
 ## If your configuration.yaml file is getting out of hand because it is too large (ahem), you should maybe consider splitting your configuration into smaller chunks.  https://home-assistant.io/docs/configuration/splitting_configuration/ ##
 ## Files containing information you would like included
 automation: !include automations.yaml
-#group: !include groups.yaml
+group: !include groups.yaml
 scene: !include scenes.yaml
 script: !include scripts.yaml
 light: !include light.yaml
