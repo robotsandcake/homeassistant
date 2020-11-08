@@ -6,24 +6,20 @@ homeassistant:
   allowlist_external_dirs:
     - !secret homeassistant_whitelist_external_dirs_00
     - !secret homeassistant_whitelist_external_dirs_01
+  allowlist_external_urls:
+    - !secret homeassistant_whitelist_urls_00
 
 ## Home Assistant API: The api integration exposes a RESTful API and allows interaction with a Home Assistant instance that is running headless. This integration depends on the http integration. https://www.home-assistant.io/integrations/api/ ##
 api:
 
-# This entry enables the the cloud component
-cloud:
-
-## Configuration: The config integration is designed to display panels in the frontend to configure and manage parts of Home Assistant. https://www.home-assistant.io/integrations/config/ ##
-config:
-
 ## Configure a default setup of Home Assistant (frontend, api, etc)
 default_config:
-
-mobile_app:
 
 # Apple iOS integration
 ios:
 
+
+cloud:
 
 ## Update Preferences
 updater:

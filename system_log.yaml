@@ -3,9 +3,6 @@
 
 ## The system_log integration stores information about all logged errors and warnings in Home Assistant. To view your logs, navigate to Configuration -> Logs. In order to not overload Home Assistant with log data, only the 50 last errors and warnings will be stored. Older entries are automatically discarded from the log. It is possible to change the number of stored log entries using the parameter max_entries. https://www.home-assistant.io/integrations/system_log/ ##
 
-Configuration
-This integration is automatically loaded by the frontend (so no need to do anything if you are using the frontend). If you are not doing so, or if you wish to change a parameter, add the following section to your configuration.yaml file:
-
 system_log:
   max_entries: 100
 # Using counter to count errors as caught by Home Assistant, you need to add fire_event: `true` to your configuration.yaml, like so:
