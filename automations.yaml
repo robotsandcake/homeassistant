@@ -59,25 +59,36 @@
   mode: single
 - id: '1601159450813'
   alias: Sunset in Bedroom
-  description: From user selected lighting, begin to simulate lighting conditions
-    at sunset help with sleep hygiene
+  description: Simulate sunset in the bedroom only, by slowly transitioning to red
+    light thereby removing  as much blue light from the room and promoting good sleep
+    hygiene and the production of melatonin.
   trigger:
   - platform: time
-    at: '20:56'
+    at: '21:15'
   condition: []
   action:
   - service: light.turn_on
     data:
       entity_id: light.bedroom
-      transition: 30
+      transition: 900
       color_name: red
-      brightness: 100
+      brightness_pct: 100
     entity_id: light.bedroom
   - service: persistent_notification.create
     data:
-      message: By the power of Grey Skull, sunset declared.
-      title: Sunset
+      message: By the power of Grey Skull, I DECLARE SUNSET!!
+      title: He-Man Declaration of Sunset
       notification_id: persistent_sunset
+  - service: telegram_bot.send_message
+    data:
+      message: By the power of Grey Skull, I DECLARE SUNSET!!
+      title: He-Man Declaration of Sunset
+      target:
+      - 731090912
+      parse_mode: markdown
+      disable_notification: false
+      disable_web_page_preview: false
+      timeout: 1000
   mode: single
 - id: '1602052371260'
   alias: Sunrise in da House
@@ -153,6 +164,13 @@
   - service: telegram_bot.send_message
     data:
       message: Z-Wave Network is Ready
+      title: Z-Wave Ready
+      target:
+      - 731090912
+      parse_mode: markdown
+      disable_notification: false
+      disable_web_page_preview: false
+      timeout: 1000
   - service: persistent_notification.create
     data:
       message: Z-Wave Network is Ready
@@ -231,4 +249,52 @@
   - service: light.turn_off
     data: {}
     entity_id: light.bedroom
+  mode: single
+- id: '1605038797747'
+  alias: Imminent Rain So Close Basement Window
+  description: Send various notifications when there is consensus among the climate
+    sensors, if rain is imminent if and the basement window is open.
+  trigger:
+  - platform: state
+    entity_id: sensor.todmorden_weather
+    to: rain
+    for: '1'
+  condition:
+  - condition: state
+    entity_id: sensor.basement_window_state
+    state: Open
+  action:
+  - service: tts.google_translate_say
+    data:
+      entity_id: media_player.server_cupboard_speakers
+      message: Going to rain in about 10 minutes, please close basement window.
+  mode: single
+- id: '1605046704424'
+  alias: Do Not Open The Window In The Rain
+  description: Various notifications so that if it is raining outside and somebody
+    opens the basement window they are reminded that this might not be a good idea.
+  trigger:
+  - platform: state
+    to: Open
+    for: '3'
+    entity_id: sensor.basement_window_state
+    from: Closed
+  condition:
+  - condition: state
+    entity_id: weather.accuweather_todmorden
+    state: rain
+  - condition: state
+    entity_id: weather.met_office_todmorden
+    state: rain
+  - condition: state
+    entity_id: weather.meteorologisk_institutt
+    state: rain
+  - condition: state
+    entity_id: weather.openweathermap
+    state: rain
+  action:
+  - service: telegram_bot.send_message
+    data:
+      entity_id: media_player.server_cupboard_speakers
+      message: Dude, it's raining, please close the basement window.
   mode: single

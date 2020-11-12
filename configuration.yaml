@@ -3,11 +3,17 @@ homeassistant:
   customize_glob: !include customize_glob.yaml
   customize_domain: !include customize_domain.yaml
   packages: !include_dir_named packages
+  external_url: "https://wzf47zhxe6ysgan1atrfazuz1q4xxb0p.ui.nabu.casa/"
+  internal_url: "https://duckfat.website/"
   allowlist_external_dirs:
     - !secret homeassistant_whitelist_external_dirs_00
     - !secret homeassistant_whitelist_external_dirs_01
   allowlist_external_urls:
     - !secret homeassistant_whitelist_urls_00
+  media_dirs:
+    media: !secret homeassistant_media_dirs_media
+    recordings: !secret homeassistant_media_dirs_recordings
+  legacy_templates: false
 
 ## Home Assistant API: The api integration exposes a RESTful API and allows interaction with a Home Assistant instance that is running headless. This integration depends on the http integration. https://www.home-assistant.io/integrations/api/ ##
 api:
@@ -18,9 +24,10 @@ default_config:
 # Apple iOS integration
 ios:
 
-## https://www.home-assistant.io/integrations/cloud
+## Configuration - The config integration is designed to display panels in the frontend to configure and manage parts of Home Assistant.https://www.home-assistant.io/integrations/cloud
 cloud:
 
+## Configuration - The config integration is designed to display panels in the frontend to configure and manage parts of Home Assistant. https://www.home-assistant.io/integrations/config/
 config:
 
 ## Update Preferences

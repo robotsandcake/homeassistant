@@ -3,7 +3,7 @@
 # The group light platform lets you combine multiple lights into one entity. All child lights of a light group can still be used as usual, but controlling the state of the grouped light will forward the command to each child light. https://www.home-assistant.io/integrations/light.group/
 
 ##################################
-# Groups of Lights in the House ##
+# Groups of Lights in ma House ##
 ##################################
   - platform: group
     name: "Kitchen Lights"
