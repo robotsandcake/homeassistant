@@ -25,6 +25,7 @@ code_blue:
       - light.bedroom
       mode: breathe
     service: lifx.effect_pulse
+    entity_id: light.bedroom
 code_blue_basement:
   alias: Code Blue Basement
   icon: mdi:flag
@@ -46,6 +47,7 @@ code_blue_basement:
       - light.bedroom
       mode: breathe
     service: lifx.effect_pulse
+    entity_id: light.bedroom
 code_blue_kitchen:
   alias: Code Blue Kitchen
   icon: mdi:flag
@@ -69,8 +71,9 @@ code_blue_kitchen:
       - light.bedroom
       mode: breathe
     service: lifx.effect_pulse
+    entity_id: light.bedroom
 code_blue_sitting_room:
-  alias: Code Blue Sitting Room
+  alias: Code Blue Living Room
   icon: mdi:flag
   mode: single
   sequence:
@@ -91,6 +94,7 @@ code_blue_sitting_room:
       - light.bedroom
       mode: breathe
     service: lifx.effect_pulse
+    entity_id: light.bedroom
 code_blue_office:
   alias: Code Blue Office
   icon: mdi:flag
@@ -112,6 +116,7 @@ code_blue_office:
       - light.bedroom
       mode: breathe
     service: lifx.effect_pulse
+    entity_id: light.bedroom
 the_fan:
   alias: The Fan
   sequence:
@@ -119,6 +124,7 @@ the_fan:
     data: {}
     entity_id: switch.fan
   mode: single
+  icon: mdi:fan
 projector:
   alias: Projector
   icon: mdi:projector
@@ -131,7 +137,7 @@ projector:
       transition: 30
     service: light.turn_on
 bedroom_relax:
-  alias: Bedroom Relax Profile
+  alias: Bedroom Profile Relax
   mode: single
   sequence:
   - data:
@@ -140,8 +146,9 @@ bedroom_relax:
       profile: relax
       transition: 60
     service: light.turn_on
+  icon: mdi:lightbulb-outline
 bedroom_concentrate:
-  alias: Bedroom Concentrate Profile
+  alias: Bedroom Profile Concentrate
   mode: single
   sequence:
   - data:
@@ -150,6 +157,7 @@ bedroom_concentrate:
       profile: concentrate
       transition: 60
     service: light.turn_on
+  icon: mdi:lightbulb-outline
 bedroom_reading:
   alias: Bedroom Reading Profile
   mode: single
@@ -222,7 +230,7 @@ bright_sitting_room:
       white_value: 255
     service: light.turn_on
 house_relax:
-  alias: Profile House Relax
+  alias: House Profile Relax
   mode: single
   sequence:
   - data:
@@ -239,8 +247,9 @@ house_relax:
       profile: relax
       transition: 60
     service: light.turn_on
+  icon: mdi:lightbulb-outline
 house_concentrate:
-  alias: Profile House Concentrate
+  alias: House Profile Concentrate
   mode: single
   sequence:
   - data:
@@ -257,8 +266,9 @@ house_concentrate:
       profile: concentrate
       transition: 60
     service: light.turn_on
+  icon: mdi:lightbulb-outline
 profile_house_energize:
-  alias: Profile House Energize
+  alias: House Profile Energize
   mode: single
   sequence:
   - data:
@@ -275,8 +285,9 @@ profile_house_energize:
       profile: energize
       transition: 60
     service: light.turn_on
+  icon: mdi:lightbulb-outline
 profile_house_reading:
-  alias: Profile House Reading
+  alias: House Profile Reading
   mode: single
   sequence:
   - data:
@@ -293,8 +304,9 @@ profile_house_reading:
       profile: reading
       transition: 60
     service: light.turn_on
+  icon: mdi:lightbulb-outline
 profile_bedroom_energise:
-  alias: Profile Bedroom Energise
+  alias: Bedroom Profile Energise
   sequence:
   - service: light.turn_on
     data:
@@ -304,28 +316,31 @@ profile_bedroom_energise:
       profile: energize
       transition: 60
   mode: single
-30_minute_red_fade:
-  alias: 30 Minute Red Fade
+  icon: mdi:lightbulb-outline
+bedroom_30_minute_fade_to_red_light:
+  alias: Bedroom 30 Minute Fade to Red Light
   sequence:
   - service: light.turn_on
     data:
       transition: 1800
+      color_name: red
       brightness_pct: 100
     entity_id: light.bedroom
   mode: single
   icon: mdi:weather-sunset
-60_minute_red_fade:
-  alias: 60 Minute Red Fade
+bedroom_60_minute_fade_to_red_light:
+  alias: Bedroom 60 Minute Fade to Red Light
   sequence:
   - service: light.turn_on
     data:
       transition: 3600
+      color_name: red
       brightness_pct: 100
     entity_id: light.bedroom
   mode: single
   icon: mdi:weather-sunset
-10_minute_red_fade:
-  alias: 10 Minute Red Fade
+bedroom_10_minute_fade_to_red_light:
+  alias: Bedroom 10 Minute Fade to Red Light
   sequence:
   - service: light.turn_on
     data:
@@ -335,8 +350,8 @@ profile_bedroom_energise:
     entity_id: light.bedroom
   mode: single
   icon: mdi:weather-sunset
-5_minute_red_fade:
-  alias: 01 Minute Red Fade
+bedroom_01_minute_fade_to_red_light:
+  alias: Bedroom 01 Minute Fade to Red Light
   sequence:
   - service: light.turn_on
     data:
@@ -346,8 +361,8 @@ profile_bedroom_energise:
     entity_id: light.bedroom
   mode: single
   icon: mdi:weather-sunset
-05_minute_red_fade:
-  alias: 05 Minute Red Fade
+bedroom_05_minute_fade_to_red_light:
+  alias: Bedroom 05 Minute Fade to Red Light
   sequence:
   - service: light.turn_on
     data:
@@ -363,7 +378,21 @@ bedtime:
   - service: light.turn_off
     data:
       entity_id: light.bedroom
-      transition: 900
+      transition: 300
     entity_id: light.bedroom
   mode: single
   icon: mdi:bed
+bedroom_lighting_test_script:
+  alias: Bedroom Lighting Test Script
+  sequence:
+  - service: lifx.effect_pulse
+    data:
+      entity_id: light.bedroom
+      mode: breathe
+      brightness: 255
+      color_name: green
+      period: 0.5
+      cycles: 5
+    entity_id: light.bedroom
+  mode: single
+  icon: mdi:test-tube
