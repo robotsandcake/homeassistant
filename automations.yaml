@@ -31,11 +31,20 @@
     data:
       latitude: '{{ states.person.stuart.attributes.latitude }}'
       longitude: '{{ states.person.stuart.attributes.longitude }}'
+      target:
+      - 731090912
       disable_notification: false
       timeout: 1000
   - service: telegram_bot.send_message
     data:
       message: Home assistant has come to life
+      title: Home assistant is alive
+      target:
+      - 731090912
+      parse_mode: markdown
+      disable_notification: false
+      disable_web_page_preview: false
+      timeout: 1000
   mode: single
 - id: '1600594791855'
   alias: Sunrise in the Bedroom
@@ -282,15 +291,6 @@
   condition:
   - condition: state
     entity_id: weather.accuweather_todmorden
-    state: rain
-  - condition: state
-    entity_id: weather.met_office_todmorden
-    state: rain
-  - condition: state
-    entity_id: weather.meteorologisk_institutt
-    state: rain
-  - condition: state
-    entity_id: weather.openweathermap
     state: rain
   action:
   - service: telegram_bot.send_message
