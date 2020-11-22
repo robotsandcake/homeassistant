@@ -9,32 +9,32 @@
     name: "Kitchen Lights"
     entities:
       - light.onekit
-      - light.twokit
+      #- light.twokit
       - light.threekit
 
   - platform: group
     name: "Sitting Room Lights"
     entities:
-      - light.sofa
+      #- light.sofa
       - light.treadmill
 
   - platform: group
     name: "Kitchen and Sitting Room"
     entities:
       - light.onekit
-      - light.twokit
+      #- light.twokit
       - light.threekit
       - light.treadmill
-      - light.sofa
+      #- light.sofa
 
   - platform: group
     name: "All Lights"
     entities:
       - light.onekit
-      - light.twokit
+      #- light.twokit
       - light.threekit
       - light.treadmill
-      - light.sofa
+      #- light.sofa
       - light.office
       - light.bedroom
       - light.basement
