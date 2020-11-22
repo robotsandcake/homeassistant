@@ -1,9 +1,9 @@
 - id: '1599950566225'
-  alias: Reminder to close the Cellar Window at Night
-  description: Send one or more reminders depending on who is in the house to close
-    the basement window in the evening
+  alias: Reminder to close the Basement Window at Night
+  description: 'Various reminders to close the basement window if it is still open
+    late in the evening. '
   trigger:
-  - at: '23:00'
+  - at: '23:24'
     platform: time
   condition:
   - condition: state
@@ -11,13 +11,25 @@
     state: 'on'
   action:
   - data:
+      message: >-
+        Please close the Basement Window as it is late and way past its bedtime
+      title: Basement Window Bedtime Reminder
+      parse_mode: markdown
       disable_notification: false
       disable_web_page_preview: false
-      message: please close basement window as it is late and way past its bedtime
-      parse_mode: markdown
       timeout: 1000
-      title: Basement Window Reminder
     service: telegram_bot.send_message
+  - service: tts.google_translate_say
+    data:
+      entity_id:
+      - media_player.server_cupboard_speakers
+      - media_player.mini_basement_dweller
+      message: Please close the Basement Window as it is late and way past its bedtime
+  - service: persistent_notification.create
+    data:
+      message: Please close the Basement Window as it is late and way past its bedtime
+      title: Basement Window Bedtime Reminder
+      notification_id: BasementWindowBedtime
   mode: single
 - id: '1600525359188'
   alias: IT'S ALIVE!
@@ -259,42 +271,152 @@
     data: {}
     entity_id: light.bedroom
   mode: single
-- id: '1605038797747'
-  alias: Imminent Rain So Close Basement Window
-  description: Send various notifications when there is consensus among the climate
-    sensors, if rain is imminent if and the basement window is open.
+- id: '1605443041008'
+  alias: Do Not Open The Basement Window In The Rain
+  description: Various notifications Reminding people that opening the basement window
+    when it is raining might not be a good idea.
   trigger:
   - platform: state
-    entity_id: sensor.todmorden_weather
-    to: rain
-    for: '1'
+    entity_id: binary_sensor.basement_window
+    from: 'off'
+    to: 'on'
+    for: 00:00:05
   condition:
-  - condition: state
-    entity_id: sensor.basement_window_state
-    state: Open
+  - condition: or
+    conditions:
+    - condition: state
+      entity_id: weather.accuweather_todmorden
+      state: rainy
+    - condition: state
+      entity_id: weather.met_office_todmorden
+      state: rainy
+    - condition: state
+      entity_id: weather.meteorologisk_institutt
+      state: rainy
+    - condition: state
+      entity_id: weather.openweathermap
+      state: rainy
   action:
+  - service: persistent_notification.create
+    data:
+      message: Opening the basement window when it is raining outside is not a good
+        idea, please close the basement window.  Thank you.
+      title: Close Basement Window in the Rain
+      notification_id: CloseBasementWindowintheRain
   - service: tts.google_translate_say
     data:
-      entity_id: media_player.server_cupboard_speakers
-      message: Going to rain in about 10 minutes, please close basement window.
+      entity_id:
+      - media_player.server_cupboard_speakers
+      - media_player.mini_basement_dweller
+      message: Opening the basement window when it is raining outside is not a good
+        idea, please close the basement window.  Thank you.
+  - service: tts.google_translate_say
+    data:
+      message: Opening the basement window when it is raining outside is not a good
+        idea, please close the basement window.  Thank you.
+      title: Close Basement Window in the Rain
+      target:
+      - 731090912
+      parse_mode: markdown
+      disable_notification: false
+      disable_web_page_preview: false
+      timeout: 1000
   mode: single
-- id: '1605046704424'
-  alias: Do Not Open The Window In The Rain
-  description: Various notifications so that if it is raining outside and somebody
-    opens the basement window they are reminded that this might not be a good idea.
+- id: '1605453196147'
+  alias: Increment Medication by One
+  description: Increment the medication counter by one
+  trigger:
+  - platform: webhook
+    webhook_id: medication_00
+  condition: []
+  action:
+  - service: counter.increment
+    data: {}
+    entity_id: counter.medication
+  mode: single
+- id: OfficeDoorStillOpen10
+  alias: Office Door is still open
+  description: Various notifications including audioDesigned to remind people to close
+    the office door.
   trigger:
   - platform: state
+    entity_id: sensor.office_door_state
     to: Open
-    for: '3'
-    entity_id: sensor.basement_window_state
-    from: Closed
-  condition:
-  - condition: state
-    entity_id: weather.accuweather_todmorden
-    state: rain
+    for: 0:10:00
   action:
+  - service: tts.cloud_say
+    data:
+      entity_id:
+      - media_player.mini_basement_dweller
+      - media_player.server_cupboard
+      message: Stuarts office door has been open for 10 minutes, please do him a solid
+        and keep the door closed.
+      options:
+        gender: female
+      language: en-US
+  mode: single
+- id: '1605618700132'
+  alias: Reset Med
+  description: ''
+  trigger:
+  - platform: time
+    at: 00:00
+  condition: []
+  action:
+  - service: counter.reset
+    data: {}
+    entity_id: counter.medication
+  mode: single
+- id: '1606069632673'
+  alias: Torrent Has Finished Downloading Transmission Notification
+  description: Receive notification when your completely legal "Linux ISO" has finished
+    downloading in Transmission
+  trigger:
+  - platform: event
+    event_type: transmission_downloaded_torrent
+    event_data: {}
+  condition: []
+  action:
+  - service: persistent_notification.create
+    data:
+      title: A Torrent Has Finished Downloading!
+      message: The file {{trigger.event.data.name}} has started to download
+      notification_id: transmissionStarted
   - service: telegram_bot.send_message
     data:
-      entity_id: media_player.server_cupboard_speakers
-      message: Dude, it's raining, please close the basement window.
+      title: A Torrent Has Finished Downloading!
+      message: The file {{trigger.event.data.name}} has finished downloading
+      target:
+      - 731090912
+      parse_mode: markdown
+      disable_notification: false
+      disable_web_page_preview: false
+      timeout: 1000
+  mode: single
+- id: '1606069738921'
+  alias: Torrent Has Been Removed from Transmission Notification
+  description: Receive notification when your completely legal "Linux ISO" has being
+    removed from Transmission
+  trigger:
+  - platform: event
+    event_type: transmission_removed_torrent
+    event_data: {}
+  condition: []
+  action:
+  - service: persistent_notification.create
+    data:
+      title: A Torrent Has Been Removed!
+      message: The Torrent file {{trigger.event.data.name}} has been removed
+      notification_id: transmissionStarted
+  - service: telegram_bot.send_message
+    data:
+      title: A Torrent Has Been Removed!
+      message: >-
+        The Torrent file {{trigger.event.data.name}} has been removed
+      target:
+      - 731090912
+      parse_mode: markdown
+      disable_notification: false
+      disable_web_page_preview: false
+      timeout: 1000
   mode: single

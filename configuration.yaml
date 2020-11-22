@@ -8,6 +8,7 @@ homeassistant:
   allowlist_external_dirs:
     - !secret homeassistant_whitelist_external_dirs_00
     - !secret homeassistant_whitelist_external_dirs_01
+    - !secret homeassistant_whitelist_external_dirs_02
   allowlist_external_urls:
     - !secret homeassistant_whitelist_urls_00
   media_dirs:
