@@ -151,50 +151,6 @@ projector:
       entity_id: light.bedroom
       transition: 30
     service: light.turn_on
-bedroom_relax:
-  alias: Bedroom Profile Relax
-  mode: single
-  sequence:
-  - data:
-      brightness_pct: 100
-      entity_id: light.bedroom
-      profile: relax
-      transition: 60
-    service: light.turn_on
-  icon: mdi:lightbulb-outline
-bedroom_concentrate:
-  alias: Bedroom Profile Concentrate
-  mode: single
-  sequence:
-  - data:
-      brightness_pct: 100
-      entity_id: light.bedroom
-      profile: concentrate
-      transition: 60
-    service: light.turn_on
-  icon: mdi:lightbulb-outline
-bedroom_reading:
-  alias: Bedroom Reading Profile
-  mode: single
-  sequence:
-  - data:
-      brightness_pct: 100
-      entity_id: light.bedroom
-      profile: reading
-      transition: 60
-    service: light.turn_on
-new_scriptbright_bedroom_right:
-  alias: Bright Bedroom
-  icon: mdi:brightness-7
-  mode: single
-  sequence:
-  - data:
-      brightness_pct: 100
-      entity_id: light.bedroom
-      kelvin: 5000
-      transition: 10
-      white_value: 255
-    service: light.turn_on
 bright_office:
   alias: Bright Office
   mode: single
@@ -206,6 +162,8 @@ bright_office:
       transition: 10
       white_value: 255
     service: light.turn_on
+    entity_id: light.office
+  icon: mdi:brightness-7
 bright_kitchen:
   alias: Bright Kitchen
   mode: single
@@ -220,6 +178,8 @@ bright_kitchen:
       transition: 10
       white_value: 255
     service: light.turn_on
+    entity_id: light.onekit,light.twokit,light.threekit
+  icon: mdi:brightness-7
 bright_basement:
   alias: Bright Basement
   mode: single
@@ -231,6 +191,8 @@ bright_basement:
       transition: 10
       white_value: 255
     service: light.turn_on
+    entity_id: light.basement
+  icon: mdi:brightness-7
 bright_sitting_room:
   alias: Bright Sitting Room
   mode: single
@@ -244,6 +206,7 @@ bright_sitting_room:
       transition: 10
       white_value: 255
     service: light.turn_on
+    entity_id: light.sofa, light.treadmill
 house_relax:
   alias: House Profile Relax
   mode: single
@@ -320,18 +283,6 @@ profile_house_reading:
       transition: 60
     service: light.turn_on
   icon: mdi:lightbulb-outline
-profile_bedroom_energise:
-  alias: Bedroom Profile Energise
-  sequence:
-  - service: light.turn_on
-    data:
-      brightness_pct: 100
-      entity_id:
-      - light.bedroom
-      profile: energize
-      transition: 60
-  mode: single
-  icon: mdi:lightbulb-outline
 bedroom_30_minute_fade_to_red_light:
   alias: Bedroom 30 Minute Fade to Red Light
   sequence:
@@ -397,17 +348,82 @@ bedtime:
     entity_id: light.bedroom
   mode: single
   icon: mdi:bed
-bedroom_lighting_test_script:
-  alias: Bedroom Lighting Test Script
+bright_bedroom:
+  alias: Bright Bedroom
   sequence:
-  - service: lifx.effect_pulse
+  - service: light.turn_on
     data:
+      brightness_pct: 100
       entity_id: light.bedroom
-      mode: breathe
-      brightness: 255
-      color_name: green
-      period: 0.5
-      cycles: 5
+      kelvin: 5000
+      transition: 10
+      white_value: 255
     entity_id: light.bedroom
   mode: single
-  icon: mdi:test-tube
+  icon: mdi:brightness-7
+bright_house:
+  alias: Bright House
+  sequence:
+  - service: light.turn_on
+    data:
+      brightness_pct: 100
+      entity_id:
+      - light.bedroom
+      - light.basement
+      - light.office
+      - light.onekit
+      - light.treadmill
+      - light.twokit
+      kelvin: 5000
+      transition: 10
+      white_value: 255
+  mode: single
+  icon: mdi:brightness-7
+bedroom_profile_concentrate:
+  alias: Bedroom Profile Concentrate
+  sequence:
+  - service: light.turn_on
+    data:
+      brightness_pct: 100
+      entity_id: light.bedroom
+      profile: concentrate
+      transition: 60
+    entity_id: light.bedroom
+  mode: single
+  icon: mdi:lightbulb-outline
+bedroom_profile_reading:
+  alias: Bedroom Profile Reading
+  sequence:
+  - service: light.turn_on
+    data:
+      brightness_pct: 100
+      entity_id: light.bedroom
+      profile: reading
+      transition: 60
+    entity_id: light.bedroom
+  mode: single
+  icon: mdi:lightbulb-outline
+bedroom_profile_energize:
+  alias: Bedroom Profile Energize
+  sequence:
+  - service: light.turn_on
+    data:
+      brightness_pct: 100
+      entity_id: light.bedroom
+      profile: energize
+      transition: 60
+    entity_id: light.bedroom
+  mode: single
+  icon: mdi:human-greeting-proximity
+bedroom_profile_relax:
+  alias: Bedroom Profile Relax
+  sequence:
+  - service: light.turn_on
+    data:
+      brightness_pct: 100
+      entity_id: light.bedroom
+      profile: relax
+      transition: 60
+    entity_id: light.bedroom
+  mode: single
+  icon: mdi:lightbulb-outline
