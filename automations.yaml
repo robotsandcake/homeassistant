@@ -1,7 +1,7 @@
 - id: '1599950566225'
-  alias: Reminder to close the Basement Window at Night
-  description: 'Various reminders to close the basement window if it is still open
-    late in the evening. '
+  alias: Reminder to Close the Basement Window at Night
+  description: 'Reminders to close the basement window if it is still open late in
+    the evening. '
   trigger:
   - at: '23:24'
     platform: time
@@ -11,8 +11,7 @@
     state: 'on'
   action:
   - data:
-      message: >-
-        Please close the Basement Window as it is late and way past its bedtime
+      message: Please close the Basement Window as it is late and way past its bedtime
       title: Basement Window Bedtime Reminder
       parse_mode: markdown
       disable_notification: false
@@ -31,6 +30,7 @@
       title: Basement Window Bedtime Reminder
       notification_id: BasementWindowBedtime
   mode: single
+  max: 10
 - id: '1600525359188'
   alias: IT'S ALIVE!
   description: Send notification when Home Assistant starts up
@@ -80,26 +80,17 @@
   mode: single
 - id: '1601159450813'
   alias: Sunset in Bedroom
-  description: Simulate sunset in the bedroom only, by slowly transitioning to red
-    light thereby removing  as much blue light from the room and promoting good sleep
-    hygiene and the production of melatonin.
+  description: In the interests of having good sleep hygiene this automation will
+    begin to simulate sunset in the bedroom every night at the same time.  It does
+    this by slowly turning the bedroom light to a pure Red colour, thereby removing
+    blue light from the environment.  It is blue light which can help the body produce
+    cortisol.  Cortisol is a stress hormone can suppress atoning melatonin, with melatonin
+    being the hormone helps asleep.  And stuff.
   trigger:
   - platform: time
-    at: '21:15'
+    at: '23:45'
   condition: []
   action:
-  - service: light.turn_on
-    data:
-      entity_id: light.bedroom
-      transition: 900
-      color_name: red
-      brightness_pct: 100
-    entity_id: light.bedroom
-  - service: persistent_notification.create
-    data:
-      message: By the power of Grey Skull, I DECLARE SUNSET!!
-      title: He-Man Declaration of Sunset
-      notification_id: persistent_sunset
   - service: telegram_bot.send_message
     data:
       message: By the power of Grey Skull, I DECLARE SUNSET!!
@@ -110,6 +101,18 @@
       disable_notification: false
       disable_web_page_preview: false
       timeout: 1000
+  - service: light.turn_on
+    data:
+      entity_id: light.bedroom
+      transition: 600
+      color_name: red
+      brightness_pct: 100
+    entity_id: light.bedroom
+  - service: persistent_notification.create
+    data:
+      message: By the power of Grey Skull, I DECLARE SUNSET
+      title: He-Man Declaration of Sunset
+      notification_id: persistent_sunset
   mode: single
 - id: '1602052371260'
   alias: Sunrise in da House
@@ -335,22 +338,22 @@
     entity_id: counter.medication
   mode: single
 - id: OfficeDoorStillOpen10
-  alias: Office Door is still open
+  alias: Office Door Is Still Open 25 minutes
   description: Various notifications including audioDesigned to remind people to close
     the office door.
   trigger:
   - platform: state
     entity_id: sensor.office_door_state
     to: Open
-    for: 0:10:00
+    for: 0:25:00
   action:
   - service: tts.cloud_say
     data:
       entity_id:
       - media_player.mini_basement_dweller
       - media_player.server_cupboard
-      message: Stuarts office door has been open for 10 minutes, please do him a solid
-        and keep the door closed.
+      message: Dude, Stuarts office door has been open for 25 minutes, please do him
+        a solid and keep the door closed.
       options:
         gender: female
       language: en-US
@@ -411,12 +414,96 @@
   - service: telegram_bot.send_message
     data:
       title: A Torrent Has Been Removed!
-      message: >-
-        The Torrent file {{trigger.event.data.name}} has been removed
+      message: The Torrent file {{trigger.event.data.name}} has been removed
       target:
       - 731090912
       parse_mode: markdown
       disable_notification: false
       disable_web_page_preview: false
       timeout: 1000
+  mode: single
+- id: '1606230007749'
+  alias: Tag The Boss is scanned
+  description: ''
+  trigger:
+  - platform: tag
+    tag_id: 345d97e0-82f3-4560-8593-7f10655413c0
+  condition: []
+  action:
+  - service: tts.cloud_say
+    data:
+      entity_id: media_player.bedroom_display
+      message: Oi, put that back
+  mode: single
+- id: '1606230011519'
+  alias: Tag The Boss is scanned
+  description: ''
+  trigger:
+  - platform: tag
+    tag_id: 345d97e0-82f3-4560-8593-7f10655413c0
+  condition: []
+  action:
+  - service: tts.cloud_say
+    data:
+      entity_id: media_player.bedroom_display
+      message: Oi, put that back
+  mode: single
+- id: '1606230921458'
+  alias: Tag Blue is scanned
+  description: ''
+  trigger:
+  - platform: tag
+    tag_id: a703a460-ee5e-47a0-8d74-ce1ddb6e0295
+  condition: []
+  action:
+  - service: tts.cloud_say
+    data:
+      entity: media_player.bedroom_displaymessagd hello world
+  mode: single
+- id: '1606230924595'
+  alias: Tag Blue is scanned
+  description: ''
+  trigger:
+  - platform: tag
+    tag_id: a703a460-ee5e-47a0-8d74-ce1ddb6e0295
+  condition: []
+  action:
+  - service: tts.cloud_say
+    data:
+      entity: media_player.bedroom_displaymessagd hello world
+  mode: single
+- id: '1606231663150'
+  alias: Tag Blue is scanned
+  description: ''
+  trigger:
+  - platform: tag
+    tag_id: a703a460-ee5e-47a0-8d74-ce1ddb6e0295
+  condition: []
+  action:
+  - service: tts.cloud_say
+    data:
+      entity_id: media_player.server_cupboard
+      message: Excuse me, don't you think you should probably put that back!
+  mode: single
+- id: '1606484848947'
+  alias: Office Door Is Still Open 10 minutes
+  description: Various notifications including audioDesigned to remind people to close
+    the office door.
+  trigger:
+  - platform: state
+    entity_id: sensor.office_door_state
+    to: Open
+    for: 0:10:00
+  condition: []
+  action:
+  - service: tts.cloud_say
+    data:
+      entity_id:
+      - media_player.mini_basement_dweller
+      - media_player.server_cupboard
+      message: Dude, Stuarts office door has been open for 10 minutes, please do him
+        a solid and keep the door closed.
+      options:
+        gender: female
+      language: en-US
   mode: single
