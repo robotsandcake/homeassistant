@@ -3,8 +3,8 @@ homeassistant:
   customize_glob: !include customize_glob.yaml
   customize_domain: !include customize_domain.yaml
   packages: !include_dir_named packages
-  external_url: "https://wzf47zhxe6ysgan1atrfazuz1q4xxb0p.ui.nabu.casa/"
-  internal_url: "https://duckfat.website/"
+  external_url: !secret homeassistant_external_url
+  internal_url: !secret homeassistant_internal_url
   allowlist_external_dirs:
     - !secret homeassistant_whitelist_external_dirs_00
     - !secret homeassistant_whitelist_external_dirs_01
