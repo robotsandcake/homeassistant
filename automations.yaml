@@ -32,31 +32,27 @@
   mode: single
   max: 10
 - id: '1600525359188'
-  alias: IT'S ALIVE!
-  description: Send notification when Home Assistant starts up
+  alias: Home Assistant is ALIVE!
+  description: 'Despite all my best efforts at not paying attention to the code I''m
+    writing, Home Assistant appears to be alive and running and is also sending various
+    notifications in celebration. '
   trigger:
   - platform: homeassistant
     event: start
   condition: []
   action:
-  - service: telegram_bot.send_location
-    data:
-      latitude: '{{ states.person.stuart.attributes.latitude }}'
-      longitude: '{{ states.person.stuart.attributes.longitude }}'
-      target:
-      - 731090912
-      disable_notification: false
-      timeout: 1000
   - service: telegram_bot.send_message
     data:
-      message: Home assistant has come to life
-      title: Home assistant is alive
+      message: In the name of evolution, I'm alive!!
+      title: Home Assistant is ALIVE!
       target:
+      - 1025847357
       - 731090912
       parse_mode: markdown
       disable_notification: false
       disable_web_page_preview: false
       timeout: 1000
+      message_tag: hass_related_msg
   mode: single
 - id: '1600594791855'
   alias: Sunrise in the Bedroom
@@ -88,7 +84,7 @@
     being the hormone helps asleep.  And stuff.
   trigger:
   - platform: time
-    at: '23:45'
+    at: '23:53'
   condition: []
   action:
   - service: telegram_bot.send_message
@@ -258,22 +254,6 @@
       title: A Torrent Has Started Downloading!
       message: The file {{trigger.event.data.name}} has started to download
   mode: single
-- id: '1603276142404'
-  alias: Tag The Boss is scanned
-  description: ''
-  trigger:
-  - platform: tag
-    tag_id: 345d97e0-82f3-4560-8593-7f10655413c0
-  condition: []
-  action:
-  - service: tts.cloud_say
-    data:
-      message: Katie has a big smell head!
-      entity_id: media_player.office_mini
-  - service: light.turn_off
-    data: {}
-    entity_id: light.bedroom
-  mode: single
 - id: '1605443041008'
   alias: Do Not Open The Basement Window In The Rain
   description: Various notifications Reminding people that opening the basement window
@@ -325,50 +305,27 @@
       disable_web_page_preview: false
       timeout: 1000
   mode: single
-- id: '1605453196147'
-  alias: Increment Medication by One
-  description: Increment the medication counter by one
-  trigger:
-  - platform: webhook
-    webhook_id: medication_00
-  condition: []
-  action:
-  - service: counter.increment
-    data: {}
-    entity_id: counter.medication
-  mode: single
 - id: OfficeDoorStillOpen10
-  alias: Office Door Is Still Open 25 minutes
-  description: Various notifications including audioDesigned to remind people to close
-    the office door.
+  alias: Office Door Is Still Open 40 minutes
+  description: Various notifications, including audio notifications to remind people
+    to close the office door after a defined amount of time.
   trigger:
   - platform: state
     entity_id: sensor.office_door_state
     to: Open
-    for: 0:25:00
+    for: 0:40:00
   action:
   - service: tts.cloud_say
     data:
       entity_id:
       - media_player.mini_basement_dweller
       - media_player.server_cupboard
-      message: Dude, Stuarts office door has been open for 25 minutes, please do him
-        a solid and keep the door closed.
+      message: '"I really am sorry to interrupt what I''m sure is very important work,
+        however Stuart''s office door has been open for 40 minutes.  Could you please
+        close it at your earliest convenience."'
       options:
         gender: female
       language: en-US
-  mode: single
-- id: '1605618700132'
-  alias: Reset Med
-  description: ''
-  trigger:
-  - platform: time
-    at: 00:00
-  condition: []
-  action:
-  - service: counter.reset
-    data: {}
-    entity_id: counter.medication
   mode: single
 - id: '1606069632673'
   alias: Torrent Has Finished Downloading Transmission Notification
@@ -422,78 +379,15 @@
       disable_web_page_preview: false
       timeout: 1000
   mode: single
-- id: '1606230007749'
-  alias: Tag The Boss is scanned
-  description: ''
-  trigger:
-  - platform: tag
-    tag_id: 345d97e0-82f3-4560-8593-7f10655413c0
-  condition: []
-  action:
-  - service: tts.cloud_say
-    data:
-      entity_id: media_player.bedroom_display
-      message: Oi, put that back
-  mode: single
-- id: '1606230011519'
-  alias: Tag The Boss is scanned
-  description: ''
-  trigger:
-  - platform: tag
-    tag_id: 345d97e0-82f3-4560-8593-7f10655413c0
-  condition: []
-  action:
-  - service: tts.cloud_say
-    data:
-      entity_id: media_player.bedroom_display
-      message: Oi, put that back
-  mode: single
-- id: '1606230921458'
-  alias: Tag Blue is scanned
-  description: ''
-  trigger:
-  - platform: tag
-    tag_id: a703a460-ee5e-47a0-8d74-ce1ddb6e0295
-  condition: []
-  action:
-  - service: tts.cloud_say
-    data:
-      entity: media_player.bedroom_displaymessagd hello world
-  mode: single
-- id: '1606230924595'
-  alias: Tag Blue is scanned
-  description: ''
-  trigger:
-  - platform: tag
-    tag_id: a703a460-ee5e-47a0-8d74-ce1ddb6e0295
-  condition: []
-  action:
-  - service: tts.cloud_say
-    data:
-      entity: media_player.bedroom_displaymessagd hello world
-  mode: single
-- id: '1606231663150'
-  alias: Tag Blue is scanned
-  description: ''
-  trigger:
-  - platform: tag
-    tag_id: a703a460-ee5e-47a0-8d74-ce1ddb6e0295
-  condition: []
-  action:
-  - service: tts.cloud_say
-    data:
-      entity_id: media_player.server_cupboard
-      message: Excuse me, don't you think you should probably put that back!
-  mode: single
 - id: '1606484848947'
-  alias: Office Door Is Still Open 10 minutes
-  description: Various notifications including audioDesigned to remind people to close
-    the office door.
+  alias: Office Door Is Still Open 25 minutes
+  description: Various notifications, including audio notifications to remind people
+    to close the office door after a defined amount of time.
   trigger:
   - platform: state
     entity_id: sensor.office_door_state
     to: Open
-    for: 0:10:00
+    for: 0:25:00
   condition: []
   action:
   - service: tts.cloud_say
@@ -501,9 +395,140 @@
       entity_id:
       - media_player.mini_basement_dweller
       - media_player.server_cupboard
-      message: Dude, Stuarts office door has been open for 10 minutes, please do him
-        a solid and keep the door closed.
+      message: '"I really am sorry to interrupt what I''m sure is very important work,
+        however Stuart''s office door has been open for 25 minutes.  Could you please
+        close it at your earliest convenience."'
       options:
         gender: female
       language: en-US
+  mode: single
+- id: '1606674610767'
+  alias: Tag Boss is scanned
+  description: ''
+  trigger:
+  - platform: tag
+    tag_id: 8bbc858d-b7bf-4825-9169-de50f9806d73
+  condition: []
+  action:
+  - service: tts.cloud_say
+    data:
+      entity_id: media_player.bedroom_display
+      message: Hello
+  mode: single
+- id: '1606870539198'
+  alias: Medication - Increment Dose Counter by One Dose
+  description: Increment counter.medication_doses counter by one
+  trigger:
+  - platform: webhook
+    webhook_id: medication_00
+  condition: []
+  action:
+  - service: counter.increment
+    data: {}
+    entity_id: counter.medication_doses_since_midnight
+  mode: single
+- id: '1606870654977'
+  alias: Medication - Decrement Remaining Doses by One
+  description: Decrement counter.remaining by one
+  trigger:
+  - platform: template
+    value_template: '{{ (states.sensor.time.last_changed - states.counter.medication_doses_since_midnight.last_changed).total_seconds()
+      < 5 }}'
+  condition: []
+  action:
+  - service: counter.decrement
+    data: {}
+    entity_id: counter.doses_remaining_this_week
+  - service: tts.cloud_say
+    data:
+      entity_id: media_player.bedroom_display
+      message: Bong!
+  mode: single
+- id: '1606872319853'
+  alias: Medication - Green Lights When Medication Dose Successfully Logged
+  description: Flash lights green when medication counters have been incremented by
+    one and decement by one.
+  trigger:
+  - platform: numeric_state
+    entity_id: counter.doses_remaining_this_week
+    above: '0'
+    for: 00:00:01
+  condition: []
+  action:
+  - service: lifx.effect_pulse
+    data:
+      entity_id: light.bedroom
+      mode: blink
+      brightness: 255
+      color_name: green
+      period: 1
+      cycles: 3
+    entity_id: light.bedroom
+  mode: single
+- id: '1606971895706'
+  alias: Medication - Reset Dose Counter at Midnight GMT
+  description: Reset counter.medication_doses at Midnight GMT
+  trigger:
+  - platform: time
+    at: '23:59'
+  condition: []
+  action:
+  - service: counter.reset
+    data: {}
+    entity_id: counter.medication_doses_since_midnight
+  mode: single
+- id: '1607754449668'
+  alias: Medication - Increment Dose Counter by One Dose Test
+  description: Increment counter.medication_doses_since_midnight_test counter by one
+  trigger:
+  - platform: webhook
+    webhook_id: medication_03
+  condition: []
+  action:
+  - service: counter.increment
+    data: {}
+    entity_id: counter.medication_doses_since_midnight_test
+  mode: single
+- id: '1607764874332'
+  alias: Medication - We have reached a Houston Test
+  description: ' Tony input select to be on position for various reasons.'
+  trigger:
+  - platform: state
+    entity_id: counter.medication_doses_buffer_since_midnight_test
+    to: '2'
+  condition: []
+  action:
+  - service: input_boolean.toggle
+    data: {}
+    entity_id: input_boolean.bad_buffer_day
+  mode: single
+- id: '1607765114866'
+  alias: Medication - Decrement Remaining Doses by One Test
+  description: Decrement counter.remaining by one
+  trigger:
+  - platform: template
+    value_template: '{{ (states.sensor.time.last_changed - states.counter.medication_doses_since_midnight_test.last_changed).total_seconds()
+      < 5 }}'
+  condition: []
+  action:
+  - service: counter.decrement
+    data: {}
+    entity_id: counter.doses_remaining_this_week_test
+  - service: lifx.effect_pulse
+    data:
+      action:
+      - service: lifx.effect_pulse
+        data:
+          entity_id:
+          - light.bedroom
+          - light.office
+          - light.basement
+          - light.treadmill
+          - light.twokit
+          - light.onekit
+          mode: blink
+          brightness: 255
+          color_name: green
+          period: 1
+          cycles: 3
   mode: single

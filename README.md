@@ -1,10 +1,9 @@
 # Home Assistant Config by [@RobotsandCake](https://github.com/robotsandcake) #
 
-[![GitHub issues](https://img.shields.io/github/issues/robotsandcake/homeassistant)](https://github.com/robotsandcake/homeassistant/issues)
-[![GitHub stars](https://img.shields.io/github/stars/robotsandcake/homeassistant?style=flat-square)](https://github.com/robotsandcake/homeassistant/stargazers)
-[![GitHub forks](https://img.shields.io/github/forks/robotsandcake/homeassistant?style=flat-square)](https://github.com/robotsandcake/homeassistant/network)
-[![GitHub issues](https://img.shields.io/github/issues/robotsandcake/homeassistant)](https://github.com/robotsandcake/homeassistant/issues)
-[![Twitter](https://img.shields.io/twitter/url?style=social&url=https%3A%2F%2Ftwitter.com%2Fescapologybb)](https://twitter.com/intent/tweet?text=Wow:&url=https%3A%2F%2Ftwitter.com%2Frobotsandcakes)
+[![GitHub issues](https://img.shields.io/github/issues/robotsandcake/homeassistant)](https://github.com/robotsandcake/homeassistant/issues) [![GitHub stars](https://img.shields.io/github/stars/robotsandcake/homeassistant?style=flat-square)](https://github.com/robotsandcake/homeassistant/stargazers) [![GitHub forks](https://img.shields.io/github/forks/robotsandcake/homeassistant?style=flat-square)](https://github.com/robotsandcake/homeassistant/network) [![GitHub issues](https://img.shields.io/github/issues/robotsandcake/homeassistant)](https://github.com/robotsandcake/homeassistant/issues)[![Twitter](https://img.shields.io/twitter/url?style=social&url=https%3A%2F%2Ftwitter.com%2Fescapologybb)](https://twitter.com/intent/tweet?text=Wow:&url=https%3A%2F%2Ftwitter.com%2Frobotsandcakes)
+
+
+---
 
 This README and repository are a work in progress. These [YAML](http://yaml.org) [Home Assistant](https://home-assistant.io/) configuration files are designed for people withprofound motor-skill difficulties like mine. For example I can flash the lights different colours throughout the houseto summon help if I need it, so blue flashing means "hey, I could do with a hand" whereas red flashing light means "Run come quick, my hair is on fire!". 
 
