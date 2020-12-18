@@ -137,7 +137,7 @@ the_fan:
   sequence:
   - service: switch.toggle
     data: {}
-    entity_id: switch.fan
+    entity_id: switch.the_fan
   mode: single
   icon: mdi:fan
 projector:
@@ -207,82 +207,6 @@ bright_sitting_room:
       white_value: 255
     service: light.turn_on
     entity_id: light.sofa, light.treadmill
-house_relax:
-  alias: House Profile Relax
-  mode: single
-  sequence:
-  - data:
-      brightness_pct: 100
-      entity_id:
-      - light.bedroom
-      - light.basement
-      - light.office
-      - light.treadmill
-      - light.sofa
-      - light.onekit
-      - light.threekit
-      - light.twokit
-      profile: relax
-      transition: 60
-    service: light.turn_on
-  icon: mdi:lightbulb-outline
-house_concentrate:
-  alias: House Profile Concentrate
-  mode: single
-  sequence:
-  - data:
-      brightness_pct: 100
-      entity_id:
-      - light.bedroom
-      - light.basement
-      - light.office
-      - light.treadmill
-      - light.sofa
-      - light.onekit
-      - light.threekit
-      - light.twokit
-      profile: concentrate
-      transition: 60
-    service: light.turn_on
-  icon: mdi:lightbulb-outline
-profile_house_energize:
-  alias: House Profile Energize
-  mode: single
-  sequence:
-  - data:
-      brightness_pct: 100
-      entity_id:
-      - light.bedroom
-      - light.basement
-      - light.office
-      - light.treadmill
-      - light.sofa
-      - light.onekit
-      - light.threekit
-      - light.twokit
-      profile: energize
-      transition: 60
-    service: light.turn_on
-  icon: mdi:lightbulb-outline
-profile_house_reading:
-  alias: House Profile Reading
-  mode: single
-  sequence:
-  - data:
-      brightness_pct: 100
-      entity_id:
-      - light.bedroom
-      - light.basement
-      - light.office
-      - light.treadmill
-      - light.sofa
-      - light.onekit
-      - light.threekit
-      - light.twokit
-      profile: reading
-      transition: 60
-    service: light.turn_on
-  icon: mdi:lightbulb-outline
 bedroom_30_minute_fade_to_red_light:
   alias: Bedroom 30 Minute Fade to Red Light
   sequence:
@@ -379,18 +303,6 @@ bright_house:
       white_value: 255
   mode: single
   icon: mdi:brightness-7
-bedroom_profile_concentrate:
-  alias: Bedroom Profile Concentrate
-  sequence:
-  - service: light.turn_on
-    data:
-      brightness_pct: 100
-      entity_id: light.bedroom
-      profile: concentrate
-      transition: 60
-    entity_id: light.bedroom
-  mode: single
-  icon: mdi:lightbulb-outline
 bedroom_profile_reading:
   alias: Bedroom Profile Reading
   sequence:
@@ -399,6 +311,106 @@ bedroom_profile_reading:
       brightness_pct: 100
       entity_id: light.bedroom
       profile: reading
+      transition: 60
+    entity_id: light.bedroom
+  mode: single
+  icon: mdi:lightbulb-outline
+bedroom_profile_relax:
+  alias: Bedroom Profile Relax
+  sequence:
+  - service: light.turn_on
+    data:
+      brightness_pct: 100
+      entity_id: light.bedroom
+      profile: relax
+      transition: 60
+    entity_id: light.bedroom
+  mode: single
+  icon: mdi:lightbulb-outline
+house_profile_relax:
+  alias: House Profile Relax
+  sequence:
+  - service: light.turn_on
+    data:
+      brightness_pct: 100
+      entity_id:
+      - light.bedroom
+      - light.basement
+      - light.office
+      - light.treadmill
+      - light.sofa
+      - light.onekit
+      - light.threekit
+      - light.twokit
+      profile: relax
+      transition: 60
+  mode: single
+  icon: mdi:lightbulb-outline
+house_profile_concentrate:
+  alias: House Profile Concentrate
+  sequence:
+  - service: light.turn_on
+    data:
+      brightness_pct: 100
+      entity_id:
+      - light.bedroom
+      - light.basement
+      - light.office
+      - light.treadmill
+      - light.sofa
+      - light.onekit
+      - light.threekit
+      - light.twokit
+      profile: concentrate
+      transition: 60
+  mode: single
+  icon: mdi:lightbulb-outline
+house_profile_reading:
+  alias: House Profile Reading
+  sequence:
+  - service: light.turn_on
+    data:
+      brightness_pct: 100
+      entity_id:
+      - light.bedroom
+      - light.basement
+      - light.office
+      - light.treadmill
+      - light.sofa
+      - light.onekit
+      - light.threekit
+      - light.twokit
+      profile: reading
+      transition: 60
+  mode: single
+  icon: mdi:lightbulb-outline
+house_profile_energize:
+  alias: House Profile Energize
+  sequence:
+  - data:
+      brightness_pct: 100
+      entity_id:
+      - light.bedroom
+      - light.basement
+      - light.office
+      - light.treadmill
+      - light.sofa
+      - light.onekit
+      - light.threekit
+      - light.twokit
+      profile: energize
+      transition: 60
+    service: light.turn_on
+  mode: single
+  icon: mdi:lightbulb-outline
+bedroom_profile_concentrate:
+  alias: Bedroom Profile Concentrate
+  sequence:
+  - service: light.turn_on
+    data:
+      brightness_pct: 100
+      entity_id: light.bedroom
+      profile: concentrate
       transition: 60
     entity_id: light.bedroom
   mode: single
@@ -415,15 +427,12 @@ bedroom_profile_energize:
     entity_id: light.bedroom
   mode: single
   icon: mdi:human-greeting-proximity
-bedroom_profile_relax:
-  alias: Bedroom Profile Relax
+are_you_busy:
+  alias: Are you busy
   sequence:
-  - service: light.turn_on
+  - service: tts.cloud_say
     data:
-      brightness_pct: 100
-      entity_id: light.bedroom
-      profile: relax
-      transition: 60
-    entity_id: light.bedroom
+      entity_id: media_player.bedroom_display
+      message: are you busy boss
   mode: single
-  icon: mdi:lightbulb-outline
+  icon: mdi:crown
