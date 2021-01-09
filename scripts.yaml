@@ -178,7 +178,10 @@ bright_kitchen:
       transition: 10
       white_value: 255
     service: light.turn_on
-    entity_id: light.onekit,light.twokit,light.threekit
+    entity_id:
+    - light.onekit
+    - light.twokit
+    - light.threekit
   icon: mdi:brightness-7
 bright_basement:
   alias: Bright Basement
@@ -428,7 +431,7 @@ bedroom_profile_energize:
   mode: single
   icon: mdi:human-greeting-proximity
 are_you_busy:
-  alias: Are you busy
+  alias: Are You Busy Boss
   sequence:
   - service: tts.cloud_say
     data:
@@ -436,3 +439,19 @@ are_you_busy:
       message: are you busy boss
   mode: single
   icon: mdi:crown
+decrement_counter_test:
+  alias: Decrement Counter Test
+  sequence:
+  - service: counter.decrement
+    data: {}
+    entity_id: counter.number_of_doses_remaining_this_week
+  mode: single
+  icon: mdi:counter
+catheter_timer_start:
+  alias: Catheter Timer Start
+  sequence:
+  - service: timer.start
+    entity_id: timer.catheter
+    data: {}
+  mode: single
+  icon: mdi:valve
