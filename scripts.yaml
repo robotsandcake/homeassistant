@@ -447,11 +447,83 @@ decrement_counter_test:
     entity_id: counter.number_of_doses_remaining_this_week
   mode: single
   icon: mdi:counter
-catheter_timer_start:
-  alias: Catheter Timer Start
+start_pomodoro_timer:
+  alias: Pomodoro Start Timer
   sequence:
   - service: timer.start
-    entity_id: timer.catheter
     data: {}
+    entity_id: timer.pomodoro
+  - service: input_boolean.turn_on
+    data: {}
+    entity_id: input_boolean.pomodoro
   mode: single
-  icon: mdi:valve
+  icon: mdi:timer
+pause_pomodoro_timer:
+  alias: Pomodoro Pause Timer
+  sequence:
+  - service: timer.pause
+    data: {}
+    entity_id: timer.pomodoro
+  mode: single
+  icon: mdi:timer
+pomodoro_cancel_timer:
+  alias: Pomodoro Cancel Timer
+  sequence:
+  - service: timer.cancel
+    data: {}
+    entity_id: timer.pomodoro
+  mode: single
+  icon: mdi:timer
+pomodoro_finish_timer:
+  alias: Pomodoro Finish Timer
+  sequence:
+  - service: timer.finish
+    data: {}
+    entity_id: timer.pomodoro
+  mode: single
+  icon: mdi:timer
+catheter_start_timer:
+  alias: Catheter Start Timer
+  sequence:
+  - service: timer.start
+    data: {}
+    entity_id: timer.catheter
+  - service: input_boolean.turn_on
+    data: {}
+    entity_id: input_boolean.catheter_timer_state
+  mode: single
+  icon: mdi:timer
+catheter_pause_timer:
+  alias: Catheter Pause Timer
+  sequence:
+  - service: timer.pause
+    data: {}
+    entity_id: timer.catheter
+  mode: single
+  icon: mdi:timer
+catheter_finish_timer:
+  alias: Catheter Finish Timer
+  sequence:
+  - service: timer.finish
+    data: {}
+    entity_id: timer.catheter
+  mode: single
+  icon: mdi:timer
+catheter_cancel_timer:
+  alias: Catheter Cancel Timer
+  sequence:
+  - service: timer.cancel
+    data: {}
+    entity_id: timer.catheter
+  mode: single
+  icon: mdi:timer
+catheter_finish_timer_at_will:
+  alias: Catheter Finish Timer at Will
+  sequence:
+  - service: tts.google_translate_say
+    data:
+      entity_id: media_player.server_cupboard_casting
+      message: Catheter catheter catheter. Please open the catheter now rather than
+        waiting for the timer to finish
+  mode: single
+  icon: mdi:timer
