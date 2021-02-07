@@ -2,7 +2,7 @@ homeassistant:
   customize: !include customize.yaml
   customize_glob: !include customize_glob.yaml
   customize_domain: !include customize_domain.yaml
-  packages: !include_dir_named packages
+  packages: !include_dir_named packages/
   external_url: !secret homeassistant_external_url
   internal_url: !secret homeassistant_internal_url
   allowlist_external_dirs:
