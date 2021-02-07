@@ -1,0 +1,28 @@
+# Worldclock Sensor #
+
+## The worldclock sensor platform simply displays the current time in a different time zone.https://www.home-assistant.io/integrations/worldclock/
+
+sensor:
+### Timezones ###
+  - platform: worldclock
+    time_zone: Europe/London
+    name: London
+  - platform: worldclock
+    time_zone: America/New_York
+    name: New York
+  - platform: worldclock
+    time_zone: America/Menominee
+    name: Wisconsin
+  - platform: worldclock
+    time_zone: America/Los_Angeles
+    name: Los Angeles
+  - platform: worldclock
+    time_zone: Europe/Berlin
+    name: Berlin
+  - platform: worldclock
+    time_zone: Australia/Canberra
+    name: Canberra
+
+## For valid time zones check the TZ column in the Wikipedia overview. Or get the full list from the pytz module.
+
+## python3 -c "import pytz;print(pytz.all_timezones)"

@@ -19,6 +19,7 @@ scenes.yaml
 customize.yaml
 customize_domain.yaml
 customize_glob.yaml
+package_testing_do_not_upload.yaml
 
 ## Ignore annoying Mac files
 .DS_Store
