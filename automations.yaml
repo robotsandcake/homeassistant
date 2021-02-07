@@ -1,0 +1,496 @@
+- id: '1599950566225'
+  alias: Reminder to close the Cellar Window at Night
+  description: Send one or more reminders depending on who is in the house to close
+    the basement window in the evening
+  trigger:
+  - at: '23:00'
+    platform: time
+  condition:
+  - condition: state
+    entity_id: binary_sensor.basement_window
+    state: 'on'
+  action:
+  - data:
+      disable_notification: false
+      disable_web_page_preview: false
+      message: please close basement window as it is late and way past its bedtime
+      parse_mode: markdown
+      timeout: 1000
+      title: Basement Window Reminder
+    service: telegram_bot.send_message
+  mode: single
+- id: '1600525359188'
+  alias: IT'S ALIVE!
+  description: Send notification when Home Assistant starts up
+  trigger:
+  - platform: homeassistant
+    event: start
+  condition: []
+  action:
+  - service: telegram_bot.send_location
+    data:
+      latitude: '{{ states.person.stuart.attributes.latitude }}'
+      longitude: '{{ states.person.stuart.attributes.longitude }}'
+      disable_notification: false
+      timeout: 1000
+  - service: telegram_bot.send_message
+    data:
+      message: Home assistant has come to life
+  mode: single
+- id: '1601159450813'
+  alias: Bedroom Sunset
+  description: Simulate sunset in the bedroom only, by slowly transitioning to red
+    light thereby removing  as much blue light from the room and promoting good sleep
+    hygiene and the production of melatonin.
+  trigger:
+  - platform: time
+    at: '22:40'
+  condition: []
+  action:
+  - service: light.turn_on
+    data:
+      entity_id: light.bedroom
+      transition: 96
+      color_name: red
+      brightness_pct: 100
+    entity_id: light.bedroom
+  - service: persistent_notification.create
+    data:
+      message: By the power of Grey Skull, I DECLARE SUNSET!!
+      title: He-Man Declaration of Sunset
+      notification_id: persistent_sunset
+  - service: telegram_bot.send_message
+    data:
+      message: By the power of Grey Skull, I DECLARE SUNSET!!
+      title: He-Man Declaration of Sunset
+      target:
+      - 731090912
+      parse_mode: markdown
+      disable_notification: false
+      disable_web_page_preview: false
+      timeout: 1000
+  mode: single
+- id: '1602052371260'
+  alias: House Sunrise
+  description: Automation to simulate Sunrise in every room except the bedroom.
+  trigger:
+  - platform: time
+    at: 08:02
+  condition: []
+  action:
+  - service: light.turn_on
+    data:
+      entity_id:
+      - light.bedroom
+      - light.office
+      - light.treadmill
+      - light.sofa
+      - light.onekit
+      - light.threekit
+      - light.twokit
+      transition: 100
+      kelvin: 5400
+      white_value: 250
+      brightness_pct: 100
+  - service: persistent_notification.create
+    data:
+      message: Rest of the House Sunrise
+  mode: single
+- id: '1602537280292'
+  alias: Z-Wave Network Beginning Start-Up
+  description: Send notification when the Z-Wave network begins its start-up sequence.
+  trigger:
+  - platform: event
+    event_type: zwave.network_start
+    event_data: {}
+  condition: []
+  action:
+  - service: telegram_bot.send_message
+    data:
+      message: Z-Wave network is Beginning startup
+  - service: persistent_notification.create
+    data:
+      message: Home assistant has Begun Z-Wave start-up process
+      title: Z-Wave is Starting
+      notification_id: ZWave is Starting
+  mode: single
+- id: '1602615694012'
+  alias: Z-Wave Network Has Stopped
+  description: Send notification when the Z-Wave network Stops running
+  trigger:
+  - platform: event
+    event_type: zwave.network_stop
+    event_data: {}
+  condition: []
+  action:
+  - service: telegram_bot.send_message
+    data:
+      message: Z-Wave network Has stopped
+  - service: persistent_notification.create
+    data:
+      message: Z-Wave Network has stopped
+      title: Z-Wave has stopped
+      notification_id: ZWave has Stopped
+  mode: single
+- id: '1602615770606'
+  alias: Z-Wave Network is Ready for Use
+  description: Send notification when the Z-Wave network  is ready
+  trigger:
+  - platform: event
+    event_type: zwave.network_ready
+    event_data: {}
+  condition: []
+  action:
+  - service: telegram_bot.send_message
+    data:
+      message: Z-Wave Network is Ready
+      title: Z-Wave Ready
+      target:
+      - 731090912
+      parse_mode: markdown
+      disable_notification: false
+      disable_web_page_preview: false
+      timeout: 1000
+  - service: persistent_notification.create
+    data:
+      message: Z-Wave Network is Ready
+      title: Z-Wave Network is Ready
+      notification_id: Z-Wave Network is Ready
+  mode: single
+- id: '1602615938061'
+  alias: Z-Wave Network is Completely Ready With some Dead Nodes
+  description: Send notification when the Z-Wave network  completely ready with a
+    few dead nodes
+  trigger:
+  - platform: event
+    event_type: zwave.network_complete_some_dead
+    event_data: {}
+  condition: []
+  action:
+  - service: telegram_bot.send_message
+    data:
+      message: Z-Wave Network Completely Ready With A Few Dead Nodes
+  - service: persistent_notification.create
+    data:
+      message: Z-Wave Network Completely Ready With A Few Dead Nodes
+      title: Z-Wave Network Completely Ready With A Few Dead Nodes
+      notification_id: Z-Wave Network Completely Ready With A Few Dead Nodes
+  mode: single
+- id: '1602631321182'
+  alias: Z-Wave Network is Complete
+  description: Send notification when the Z-Wave network  is Considered Complete
+  trigger:
+  - platform: event
+    event_type: zwave.network_complete
+    event_data: {}
+  condition: []
+  action:
+  - service: telegram_bot.send_message
+    data:
+      message: Z-Wave network  is Considered Complete
+  - service: persistent_notification.create
+    data:
+      message: Z-Wave network is...
+      title: Z-Wave network  is Considered Complete
+      notification_id: Z-Wave network  is Considered Complete
+  mode: single
+- id: '1603176384593'
+  alias: Torrent Has Started Downloading Transmission Notification
+  description: Receive notification when your completely legal "Linux ISO" start downloading
+    in Transmission
+  trigger:
+  - platform: event
+    event_type: transmission_started_torrent
+    event_data: {}
+  condition: []
+  action:
+  - service: persistent_notification.create
+    data:
+      title: A Torrent Has Started Downloading!
+      message: The file {{trigger.event.data.name}} has started to download
+      notification_id: transmissionStarted
+  - service: telegram_bot.send_message
+    data:
+      title: A Torrent Has Started Downloading!
+      message: The file {{trigger.event.data.name}} has started to download
+  mode: single
+- id: '1603276142404'
+  alias: Tag The Boss is scanned
+  description: ''
+  trigger:
+  - platform: tag
+    tag_id: 345d97e0-82f3-4560-8593-7f10655413c0
+  condition: []
+  action:
+  - service: tts.cloud_say
+    data:
+      message: Katie has a big smell head!
+      entity_id: media_player.office_mini
+  - service: light.turn_off
+    data: {}
+    entity_id: light.bedroom
+  mode: single
+- id: '1605038797747'
+  alias: Imminent Rain So Close Basement Window
+  description: Send various notifications when there is consensus among the climate
+    sensors, if rain is imminent if and the basement window is open.
+  trigger:
+  - platform: state
+    entity_id: sensor.todmorden_weather
+    to: rain
+    for: '1'
+  condition:
+  - condition: state
+    entity_id: sensor.basement_window_state
+    state: Open
+  action:
+  - service: tts.google_translate_say
+    data:
+      entity_id: media_player.server_cupboard_speakers
+      message: Going to rain in about 10 minutes, please close basement window.
+  mode: single
+- id: '1605046704424'
+  alias: Do Not Open The Window In The Rain
+  description: Various notifications so that if it is raining outside and somebody
+    opens the basement window they are reminded that this might not be a good idea.
+  trigger:
+  - platform: state
+    to: Open
+    for: '3'
+    entity_id: sensor.basement_window_state
+    from: Closed
+  condition:
+  - condition: state
+    entity_id: weather.accuweather_todmorden
+    state: rain
+  - condition: state
+    entity_id: weather.met_office_todmorden
+    state: rain
+  - condition: state
+    entity_id: weather.meteorologisk_institutt
+    state: rain
+  - condition: state
+    entity_id: weather.openweathermap
+    state: rain
+  action:
+  - service: telegram_bot.send_message
+    data:
+      entity_id: media_player.server_cupboard_speakers
+      message: Dude, it's raining, please close the basement window.
+  mode: single
+- id: '1610461289056'
+  alias: Medication - Increment Dose Counter by One Dose
+  description: Increment counter.stuart_dont_number_good counter by one
+  trigger:
+  - platform: webhook
+    webhook_id: medication_00
+  condition: []
+  action:
+  - service: counter.increment
+    data: {}
+    entity_id: counter.doses_since_midnight
+  - service: counter.decrement
+    data: {}
+    entity_id: counter.doses_remaining_this_week
+  mode: single
+- id: '1610670674772'
+  alias: Medication - Reset Doses Since Midnight Counter at 8:10 AM
+  description: Reset the counter named counter.doses_since_midnight every day at 8:00
+    AM (can be changed to any arbitrary time you prefer)
+  trigger:
+  - platform: time
+    at: 08:10
+  condition: []
+  action:
+  - service: counter.reset
+    data: {}
+    entity_id: counter.doses_since_midnight
+  mode: single
+- id: '1610909793647'
+  alias: A Picture from the BigSchnoz
+  description: ''
+  trigger:
+  - platform: webhook
+    webhook_id: bigschnoz
+  condition: []
+  action:
+  - service: shell_command.bigschnoz_picture
+    data: {}
+  - service: lifx.effect_pulse
+    data:
+      entity_id: light.sofa
+      mode: breathe
+      brightness: 120
+      color_name: green
+      cycles: 2
+    entity_id: light.sofa
+  mode: single
+- id: '1610980911666'
+  alias: Tag Boss Red is scanned
+  description: ''
+  trigger:
+  - platform: tag
+    tag_id: a862430c-094a-4e71-b2b0-4c8a97493a25
+  condition: []
+  action:
+  - service: lifx.effect_pulse
+    data:
+      entity_id: light.bedroom
+      mode: breathe
+      brightness: 120
+      color_name: green
+      cycles: 2
+  mode: single
+- id: '1610980990357'
+  alias: Tag Boss Black is scanned
+  description: ''
+  trigger:
+  - platform: tag
+    tag_id: 3d02ca02-217d-4151-a486-5da7f48a8e47
+  condition: []
+  action:
+  - service: lifx.effect_pulse
+    data:
+      entity_id: light.bedroom
+      mode: breathe
+      brightness: 120
+      color_name: purple
+      cycles: 2
+  mode: single
+- id: '1612270461784'
+  alias: Pomodoro Timer Start
+  trigger:
+  - platform: state
+    entity_id: input_boolean.pomodoro
+    to: 'on'
+    from: 'off'
+  action:
+  - service: timer.start
+    entity_id: timer.pomodoro
+  mode: single
+- id: '1612270489798'
+  alias: Pomodoro Timer Finished
+  trigger:
+  - platform: event
+    event_type: timer.finished
+    event_data:
+      entity_id: timer.pomodoro
+  action:
+  - service: notify.persistent_notification
+    data:
+      message: Your Pomodoro timer has finished, time for a break.
+      title: Pomodoro Timer Finished
+  - service: input_boolean.turn_off
+    data: {}
+    entity_id: input_boolean.pomodoro
+  mode: single
+- id: '1612616950494'
+  alias: Pomodoro Timer Cancelled
+  description: ''
+  trigger:
+  - platform: event
+    event_type: timer.cancelled
+    event_data:
+      entity_id: timer.pomodoro
+  condition: []
+  action:
+  - service: notify.persistent_notification
+    data:
+      message: Your Pomodoro timer has been cancelled you slacker
+      title: Pomodoro Timer Cancelled
+  - service: input_boolean.turn_off
+    data: {}
+    entity_id: input_boolean.pomodoro
+  mode: single
+- id: '1612628855983'
+  alias: Catheter Timer Start
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: input_boolean.catheter_timer_state
+    to: 'on'
+    from: 'off'
+  condition: []
+  action:
+  - service: timer.start
+    entity_id: timer.catheter
+  mode: single
+- id: '1612628948347'
+  alias: Catheter Timer Cancelled
+  description: ''
+  trigger:
+  - platform: event
+    event_type: timer.cancelled
+    event_data:
+      entity_id: timer.catheter
+  condition: []
+  action:
+  - service: tts.google_translate_say
+    data:
+      entity_id: media_player.server_cupboard_casting
+      message: Acknowledged, catheter timer has been cancelled
+  mode: single
+- id: '1612629191288'
+  alias: Catheter Timer Finished
+  description: ''
+  trigger:
+  - platform: event
+    event_type: timer.finished
+    event_data:
+      entity_id: timer.catheter
+  condition: []
+  action:
+  - service: tts.google_translate_say
+    data:
+      entity_id: media_player.server_cupboard_casting
+      message: tap tap tap tap tap tap tap tap, please open the catheter
+  - service: input_boolean.turn_off
+    data: {}
+    entity_id: input_boolean.catheter_timer_state
+  - service: persistent_notification.create
+    data:
+      message: The catheter needs to be turned on
+  mode: single
+- id: '1612635160269'
+  alias: The Fan Turn Off After 60 Minutes
+  description: mdi:fan-off
+  trigger:
+  - platform: state
+    entity_id: switch.the_fan
+    to: 'on'
+    for: '3600'
+  condition: []
+  action:
+  - type: turn_off
+    device_id: 656da6522853ba65e7dbbf56956a4d7d
+    entity_id: switch.the_fan
+    domain: switch
+  mode: single
+- id: '1612638395656'
+  alias: Colin Says There Is Water In The Basement
+  description: The ever dependable Colin is trying to say there is water in the basement.
+  trigger:
+  - type: turned_on
+    platform: device
+    device_id: 4353d923e2de5ae72a696e104e49b87c
+    entity_id: binary_sensor.colin_flood
+    domain: binary_sensor
+    for:
+      hours: 0
+      minutes: 0
+      seconds: 5
+      milliseconds: 0
+  condition: []
+  action:
+  - service: lifx.effect_pulse
+    data:
+      entity_id: light.bedroom
+      mode: blink
+      brightness: 255
+      rgb_color:
+      - 225
+      - 243
+      - 255
+      cycles: 5
+    entity_id: light.bedroom
+  mode: single
