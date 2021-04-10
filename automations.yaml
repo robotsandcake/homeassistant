@@ -44,7 +44,7 @@
     hygiene and the production of melatonin.
   trigger:
   - platform: time
-    at: '22:40'
+    at: '21:55'
   condition: []
   action:
   - service: light.turn_on
@@ -75,26 +75,20 @@
   description: Automation to simulate Sunrise in every room except the bedroom.
   trigger:
   - platform: time
-    at: 08:02
+    at: 06:59
   condition: []
   action:
   - service: light.turn_on
     data:
-      entity_id:
-      - light.bedroom
-      - light.office
-      - light.treadmill
-      - light.sofa
-      - light.onekit
-      - light.threekit
-      - light.twokit
-      transition: 100
       kelvin: 5400
       white_value: 250
       brightness_pct: 100
+      transition: 300
+    target:
+      entity_id: light.all_lights
   - service: persistent_notification.create
     data:
-      message: Rest of the House Sunrise
+      message: 0Yay. Look, it's another wonderful day then! Whooop
   mode: single
 - id: '1602537280292'
   alias: Z-Wave Network Beginning Start-Up
@@ -294,36 +288,17 @@
     entity_id: counter.doses_remaining_this_week
   mode: single
 - id: '1610670674772'
-  alias: Medication - Reset Doses Since Midnight Counter at 8:10 AM
-  description: Reset the counter named counter.doses_since_midnight every day at 8:00
+  alias: Medication - Reset Doses Since Midnight Counter at 6:00 AM
+  description: Reset the counter named counter.doses_since_midnight every day at 6:00
     AM (can be changed to any arbitrary time you prefer)
   trigger:
   - platform: time
-    at: 08:10
+    at: 06:00
   condition: []
   action:
   - service: counter.reset
     data: {}
     entity_id: counter.doses_since_midnight
-  mode: single
-- id: '1610909793647'
-  alias: A Picture from the BigSchnoz
-  description: ''
-  trigger:
-  - platform: webhook
-    webhook_id: bigschnoz
-  condition: []
-  action:
-  - service: shell_command.bigschnoz_picture
-    data: {}
-  - service: lifx.effect_pulse
-    data:
-      entity_id: light.sofa
-      mode: breathe
-      brightness: 120
-      color_name: green
-      cycles: 2
-    entity_id: light.sofa
   mode: single
 - id: '1610980911666'
   alias: Tag Boss Red is scanned
@@ -380,13 +355,20 @@
     data:
       message: Your Pomodoro timer has finished, time for a break.
       title: Pomodoro Timer Finished
+  - service: tts.cloud_say
+    data:
+      message: Well look at you Mr productive, finishing a whole Pomodoro like that!
+        Take a five-minute break champ
+      entity_id:
+      - media_player.server_cupboard
   - service: input_boolean.turn_off
     data: {}
     entity_id: input_boolean.pomodoro
   mode: single
 - id: '1612616950494'
   alias: Pomodoro Timer Cancelled
-  description: ''
+  description: Cancel your current Pomodoro session before it is scheduled to end.
+    Slacker
   trigger:
   - platform: event
     event_type: timer.cancelled
@@ -396,28 +378,42 @@
   action:
   - service: notify.persistent_notification
     data:
-      message: Your Pomodoro timer has been cancelled you slacker
+      message: Busted! You totally cancelled your Pomodoro timer early you fucking
+        slacker. Your mother would be so disappointed
       title: Pomodoro Timer Cancelled
+  - service: tts.google_translate_say
+    data:
+      message: Busted! You totally cancelled your Pomodoro timer early you fucking
+        slacker. Your mother would be so disappointed
+      entity_id:
+      - media_player.server_cupboard_casting
   - service: input_boolean.turn_off
     data: {}
     entity_id: input_boolean.pomodoro
   mode: single
 - id: '1612628855983'
   alias: Catheter Timer Start
-  description: ''
+  description: Start the Catheter timer running.
   trigger:
   - platform: state
     entity_id: input_boolean.catheter_timer_state
     to: 'on'
     from: 'off'
+  - platform: event
+    event_type: timer.started
+    event_data:
+      entity_id: timer.catheter
   condition: []
   action:
   - service: timer.start
-    entity_id: timer.catheter
+    data:
+      duration: '0'
+    target:
+      entity_id: timer.catheter
   mode: single
 - id: '1612628948347'
   alias: Catheter Timer Cancelled
-  description: ''
+  description: Cancelled Catheter timer before it is due to end normally.
   trigger:
   - platform: event
     event_type: timer.cancelled
@@ -427,29 +423,55 @@
   action:
   - service: tts.google_translate_say
     data:
-      entity_id: media_player.server_cupboard_casting
       message: Acknowledged, catheter timer has been cancelled
+      cache: true
+      entity_id: media_player.server_cupboard
+      language: en
+  - service: input_boolean.turn_off
+    target:
+      entity_id: input_boolean.catheter_timer_state
   mode: single
 - id: '1612629191288'
   alias: Catheter Timer Finished
-  description: ''
+  description: Automation for when the catheter timer has finished.
   trigger:
   - platform: event
     event_type: timer.finished
     event_data:
       entity_id: timer.catheter
+  - platform: state
+    entity_id: input_boolean.catheter_timer_state
+    from: 'on'
+    to: 'off'
   condition: []
   action:
-  - service: tts.google_translate_say
+  - service: tts.cloud_say
     data:
-      entity_id: media_player.server_cupboard_casting
-      message: tap tap tap tap tap tap tap tap, please open the catheter
-  - service: input_boolean.turn_off
-    data: {}
-    entity_id: input_boolean.catheter_timer_state
+      message: '''tap tap tap tap tap tap tap tap, please open the catheter'''
+      entity_id: media_player.server_cupboard
+      cache: true
+  - service: tts.cloud_say
+    data:
+      entity_id: media_player.server_cupboard
+      message: Word mother-funster, its totally Tappy tap tap time
+      cache: true
   - service: persistent_notification.create
     data:
       message: The catheter needs to be turned on
+  - service: input_boolean.turn_off
+    data: {}
+    entity_id: input_boolean.catheter_timer_state
+  - service: telegram_bot.send_message
+    data:
+      message: The Catheter needs to be turned back on
+      title: Catheter message
+      target:
+      - 1025847357
+      - 731090912
+      parse_mode: markdownv2
+      disable_notification: false
+      disable_web_page_preview: false
+      timeout: 1000
   mode: single
 - id: '1612635160269'
   alias: The Fan Turn Off After 60 Minutes
@@ -493,4 +515,57 @@
       - 255
       cycles: 5
     entity_id: light.bedroom
+  mode: single
+- id: '1613327425859'
+  alias: Bookcase Saw Eyeball Motion
+  description: ''
+  trigger:
+  - type: turned_on
+    platform: device
+    device_id: 7b5332d4f6e7bd61715f53c479a5f95f
+    entity_id: binary_sensor.eyeball_bookcase_sensor
+    domain: binary_sensor
+  condition: []
+  action:
+  - service: lifx.effect_pulse
+    data:
+      entity_id: light.bedroom
+      mode: blink
+      brightness: 255
+      color_name: green
+      period: 1
+      cycles: 3
+    entity_id: light.bedroom
+  mode: single
+- id: '1614612457359'
+  alias: Picture from the Fire Marshal
+  description: ''
+  trigger:
+  - platform: webhook
+    webhook_id: KitchenFireMarshal
+  condition: []
+  action:
+  - service: shell_command.firemarshal_picture
+    data: {}
+  - service: lifx.effect_pulse
+    data:
+      entity_id: light.kitchen
+      mode: strobe
+      brightness: 255
+      color_name: green
+      period: 0.4
+      cycles: 5
+  mode: single
+- id: '1617106270042'
+  alias: Reconnect Remote Access When It Drops
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: binary_sensor.remote_ui
+    from: 'on'
+    to: 'off'
+    for: '5'
+  condition: []
+  action:
+  - service: cloud.remote_connect
   mode: single

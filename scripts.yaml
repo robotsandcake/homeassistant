@@ -1,5 +1,5 @@
 code_blue:
-  alias: Code Blue
+  alias: Blue Lights Code
   icon: mdi:alarm-light-outline
   mode: single
   sequence:
@@ -11,38 +11,12 @@ code_blue:
       mode: breathe
       power_on: true
       entity_id:
-      - light.basement
       - light.onekit
       - light.threekit
       - light.twokit
       - light.treadmill
       - light.sofa
       - light.office
-    service: lifx.effect_pulse
-  - data:
-      brightness: 50
-      color_name: blue
-      period: 1
-      cycles: 2
-      mode: breathe
-      entity_id:
-      - light.bedroom
-    service: lifx.effect_pulse
-    entity_id: light.bedroom
-code_blue_basement:
-  alias: Code Blue Basement
-  icon: mdi:alarm-light-outline
-  mode: single
-  sequence:
-  - data:
-      brightness: 255
-      color_name: blue
-      period: 1
-      cycles: 5
-      mode: breathe
-      power_on: true
-      entity_id:
-      - light.basement
     service: lifx.effect_pulse
   - data:
       brightness: 50
@@ -183,19 +157,6 @@ bright_kitchen:
     - light.twokit
     - light.threekit
   icon: mdi:brightness-7
-bright_basement:
-  alias: Bright Basement
-  mode: single
-  sequence:
-  - data:
-      brightness_pct: 100
-      entity_id: light.basement
-      kelvin: 5000
-      transition: 10
-      white_value: 255
-    service: light.turn_on
-    entity_id: light.basement
-  icon: mdi:brightness-7
 bright_sitting_room:
   alias: Bright Sitting Room
   mode: single
@@ -210,28 +171,6 @@ bright_sitting_room:
       white_value: 255
     service: light.turn_on
     entity_id: light.sofa, light.treadmill
-bedroom_30_minute_fade_to_red_light:
-  alias: Bedroom 30 Minute Fade to Red Light
-  sequence:
-  - service: light.turn_on
-    data:
-      transition: 1800
-      color_name: red
-      brightness_pct: 100
-    entity_id: light.bedroom
-  mode: single
-  icon: mdi:weather-sunset
-bedroom_60_minute_fade_to_red_light:
-  alias: Bedroom 60 Minute Fade to Red Light
-  sequence:
-  - service: light.turn_on
-    data:
-      transition: 3600
-      color_name: red
-      brightness_pct: 100
-    entity_id: light.bedroom
-  mode: single
-  icon: mdi:weather-sunset
 bedroom_10_minute_fade_to_red_light:
   alias: Bedroom 10 Minute Fade to Red Light
   sequence:
@@ -265,16 +204,6 @@ bedroom_05_minute_fade_to_red_light:
     entity_id: light.bedroom
   mode: single
   icon: mdi:weather-sunset
-bedtime:
-  alias: Bedtime
-  sequence:
-  - service: light.turn_off
-    data:
-      entity_id: light.bedroom
-      transition: 300
-    entity_id: light.bedroom
-  mode: single
-  icon: mdi:bed
 bright_bedroom:
   alias: Bright Bedroom
   sequence:
@@ -283,7 +212,7 @@ bright_bedroom:
       brightness_pct: 100
       entity_id: light.bedroom
       kelvin: 5000
-      transition: 10
+      transition: 22
       white_value: 255
     entity_id: light.bedroom
   mode: single
@@ -296,7 +225,6 @@ bright_house:
       brightness_pct: 100
       entity_id:
       - light.bedroom
-      - light.basement
       - light.office
       - light.onekit
       - light.treadmill
@@ -338,7 +266,6 @@ house_profile_relax:
       brightness_pct: 100
       entity_id:
       - light.bedroom
-      - light.basement
       - light.office
       - light.treadmill
       - light.sofa
@@ -357,7 +284,6 @@ house_profile_concentrate:
       brightness_pct: 100
       entity_id:
       - light.bedroom
-      - light.basement
       - light.office
       - light.treadmill
       - light.sofa
@@ -376,7 +302,6 @@ house_profile_reading:
       brightness_pct: 100
       entity_id:
       - light.bedroom
-      - light.basement
       - light.office
       - light.treadmill
       - light.sofa
@@ -394,7 +319,6 @@ house_profile_energize:
       brightness_pct: 100
       entity_id:
       - light.bedroom
-      - light.basement
       - light.office
       - light.treadmill
       - light.sofa
@@ -486,11 +410,13 @@ catheter_start_timer:
   alias: Catheter Start Timer
   sequence:
   - service: timer.start
-    data: {}
-    entity_id: timer.catheter
+    data:
+      duration: '1800'
+    target:
+      entity_id: timer.catheter
   - service: input_boolean.turn_on
-    data: {}
-    entity_id: input_boolean.catheter_timer_state
+    target:
+      entity_id: input_boolean.catheter_timer_state
   mode: single
   icon: mdi:timer
 catheter_pause_timer:
@@ -507,6 +433,9 @@ catheter_finish_timer:
   - service: timer.finish
     data: {}
     entity_id: timer.catheter
+  - service: input_boolean.turn_off
+    target:
+      entity_id: input_boolean.catheter_timer_state
   mode: single
   icon: mdi:timer
 catheter_cancel_timer:
@@ -514,7 +443,8 @@ catheter_cancel_timer:
   sequence:
   - service: timer.cancel
     data: {}
-    entity_id: timer.catheter
+    target:
+      entity_id: timer.catheter
   mode: single
   icon: mdi:timer
 catheter_finish_timer_at_will:
@@ -527,3 +457,13 @@ catheter_finish_timer_at_will:
         waiting for the timer to finish
   mode: single
   icon: mdi:timer
+bedtime:
+  alias: Bedtime
+  sequence:
+  - service: light.turn_off
+    target:
+      entity_id: light.bedroom
+    data:
+      transition: 300
+  mode: single
+  icon: mdi:bed
