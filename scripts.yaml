@@ -452,9 +452,10 @@ catheter_finish_timer_at_will:
   sequence:
   - service: tts.google_translate_say
     data:
-      entity_id: media_player.server_cupboard_casting
+      entity_id: media_player.server_cupboard
       message: Catheter catheter catheter. Please open the catheter now rather than
         waiting for the timer to finish
+      cache: true
   mode: single
   icon: mdi:timer
 bedtime:

@@ -569,3 +569,16 @@
   action:
   - service: cloud.remote_connect
   mode: single
+- id: '1618134417678'
+  alias: Reconnect Remote Control Interface
+  description: When the remote control interface is disconnected for whatever reason,
+    reconnect it.
+  trigger:
+  - platform: state
+    entity_id: binary_sensor.remote_ui
+    to: 'off'
+    for: '10'
+  condition: []
+  action:
+  - service: cloud.remote_connect
+  mode: single
